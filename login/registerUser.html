@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/registerUser.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta - Asociación Madre Tierra</title>
+</head>
+
+<header>
+    <div>
+        <img src="/img/para banner.jpg" alt="Logo Madre Tierra">
+    </div>
+    <nav>
+        <a href="/index.php">Inicio</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <div class="cta-buttons">
+        <a href="tel:+573026040049">+57 302 604 0049</a>
+        <a href="/index.php">Inicio</a>
+    </div>
+</header>
+
+<!-- Contenedor de Registro -->
+<div class="login-container">
+    <form class="login-form" method="POST" action="procesar_registro.php">
+        <h2>Crear cuenta</h2>
+        <div class="input-group">
+            <label for="nom_usuario">Nombre</label>
+            <input type="text" id="nom_usuario" name="nom_usuario" placeholder="Introduce tu nombre" required>
+        </div>
+        <div class="input-group">
+            <label for="apell_usuario">Apellido</label>
+            <input type="text" id="apell_usuario" name="apell_usuario" placeholder="Introduce tu apellido" required>
+        </div>
+        <div class="input-group">
+            <label for="email_usuario">Correo electrónico</label>
+            <input type="email" id="email_usuario" name="email_usuario" placeholder="Introduce tu correo" required>
+        </div>
+        <div class="input-group">
+            <label for="tel_usuario">Teléfono</label>
+            <input type="tel" id="tel_usuario" name="tel_usuario" placeholder="Introduce tu número de teléfono" required>
+        </div>
+        <div class="input-group">
+            <label for="pasw_usuario">Contraseña</label>
+            <input type="password" id="pasw_usuario" name="pasw_usuario" placeholder="Crea una contraseña" required>
+        </div>
+        <button type="submit" class="btn-login">Crear cuenta</button>
+        <p class="form-footer">¿Ya tienes cuenta? <a href="/login/login.html">Iniciar sesión</a></p>
+    </form>
+</div>
+
+</body>
+
+</html>

@@ -57,10 +57,10 @@ nav a:hover {
 /* Contenedor del login */
 .login-container {
     background-color: #fff;
-    padding: 30px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 350px; /* Aumentamos el ancho */
     margin-top: 50px;
     text-align: center;
 }
@@ -69,26 +69,26 @@ nav a:hover {
 .login-form h2 {
     margin-bottom: 20px;
     color: #333;
-    font-size: 24px;
+    font-size: 26px; /* Hicimos el título un poco más grande */
 }
 
 /* Estilo de los grupos de inputs */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Aumentamos el margen */
     text-align: left;
 }
 
 /* Estilo de las etiquetas */
 .input-group label {
-    font-size: 14px;
+    font-size: 16px; /* Hicimos las etiquetas un poco más grandes */
     color: #333;
 }
 
 /* Estilo de los campos de entrada */
 .input-group input {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 12px; /* Aumentamos el padding */
+    font-size: 16px; /* Aumentamos el tamaño de fuente */
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
@@ -97,12 +97,12 @@ nav a:hover {
 /* Estilo del botón de login */
 .btn-login {
     width: 100%;
-    padding: 12px;
+    padding: 14px; /* Aumentamos el padding */
     background-color: #008f00; /* Color del botón */
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px; /* Aumentamos el tamaño de la fuente */
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -112,13 +112,22 @@ nav a:hover {
     background-color: #006400; /* Un verde más oscuro */
 }
 
-/* Estilo para que el login quede centrado en la página */
-body {
+/* Estilo para los botones de crear cuenta y recuperar contraseña */
+.login-options {
+    margin-top: 25px; /* Aumentamos el margen */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
+    gap: 12px; /* Aumentamos el espacio entre los botones */
+}
+
+.login-options a {
+    color: #008f00;
+    font-size: 16px; /* Aumentamos el tamaño de la fuente */
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    color: #006400;
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -129,6 +138,6 @@ body {
     }
     .login-container {
         width: 90%; /* Hacer el login más ancho en pantallas pequeñas */
-        padding: 20px;
+        padding: 25px; /* Ajustamos el padding para pantallas pequeñas */
     }
 }

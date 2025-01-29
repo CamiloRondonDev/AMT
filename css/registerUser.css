@@ -1,0 +1,237 @@
+/* Estilos generales del body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del header (Banner) */
+header {
+    background-color: #222;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1; /* Asegura que el banner siempre esté arriba */
+    margin-bottom: 60px;
+}
+
+header img {
+    height: 60px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00b300;
+}
+
+.cta-buttons a {
+    background-color: #00b300;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.cta-buttons a:hover {
+    background-color: #008f00;
+}
+
+/* Contenedor del Login y Registro */
+.login-container, .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px); /* Ajusta el alto para no superponerse con el banner */
+    padding: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos de los campos del formulario */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+/* Estilo al pasar el foco por los campos de texto */
+.input-group input:focus {
+    border-color: #4CAF50;
+}
+
+/* Estilo para los botones */
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #008f00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00b300;
+}
+
+/* Estilo para los enlaces de "Crear cuenta" y "Recuperar contraseña" */
+form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #008f00;
+    text-decoration: none;
+}
+
+form a:hover {
+    color: #00b300;
+}
+
+/* Estilos de los botones adicionales en el login */
+button[type="submit"] {
+    background-color: #008f00;
+    color: white;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #00b300;
+}
+
+/* Estilos de la barra lateral */
+.sidebar {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 2%;
+}
+
+/* Título de los filtros */
+.sidebar h3 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #4CAF50;
+}
+
+/* Estilo para las categorías de filtros */
+.filter-category {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los títulos de cada filtro */
+.filter-category h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Estilo para los select y range */
+.filter-category select,
+.filter-category input[type="range"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+/* Cambio de color en el foco de los inputs */
+.filter-category select:focus,
+.filter-category input[type="range"]:focus {
+    border-color: #4CAF50;
+}
+
+/* Estilo para el rango de precios */
+.filter-category input[type="range"] {
+    margin-top: 10px;
+}
+
+/* Estilo para el texto del rango de precios */
+.filter-category p {
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: right;
+    color: #555;
+}
+
+/* Evitar que los elementos se desborden */
+@media (max-width: 768px) {
+    .sidebar {
+        flex-direction: column;
+    }
+
+    .filter-category {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .login-container, .register-container {
+        height: auto; /* Deja que el contenedor ajuste su altura al contenido */
+    }
+
+    form {
+        width: 100%;
+    }
+}
