@@ -3,88 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/editProd.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Producto</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #222;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            max-height: 50px;
-            margin-right: 15px;
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-            color: #00b300;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            color: #555;
-        }
-
-        input, textarea, select, button {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        button {
-            background-color: #00b300;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-        }
-
-        button:hover {
-            background-color: #008f00;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #777;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -106,30 +28,45 @@
             </select>
 
             <label for="editProductName">Nombre del Producto:</label>
-            <input type="text" id="editProductName" name="productName" placeholder="Ej. Producto Ecológico">
+            <input type="text" id="editProductName" name="nombre_producto" placeholder="Ej. Producto Ecológico">
 
-            <label for="editProductDescription">Descripción:</label>
-            <textarea id="editProductDescription" name="productDescription" rows="4"
-                placeholder="Breve descripción del producto..."></textarea>
+            <label for="editFactory">Punto Fábrica Producto:</label>
+            <input type="text" id="editFactory" name="Fabrica_producto" placeholder="Ej. municipio de fabricación">
+
+            <label for="editCoverage">Cobertura de Venta:</label>
+            <input type="text" id="editCoverage" name="covetruraVenta_producto" placeholder="Ej. Nacional, Internacional">
+
+            <label for="editAvailability">Disponibilidad:</label>
+            <input type="text" id="editAvailability" name="disponivilidad_producto" placeholder="Ej. En stock, Bajo pedido">
+
+            <label for="editProductType">Tipo de Producto:</label>
+            <select id="editProductType" name="tipo_producto">
+                <option value="bien">Bien</option>
+                <option value="servicio">Servicio</option>
+            </select>
 
             <label for="editProductPrice">Precio ($):</label>
-            <input type="number" id="editProductPrice" name="productPrice" placeholder="Ej. 50000">
+            <input type="number" id="editProductPrice" name="precio_producto" placeholder="Ej. 50000">
 
             <label for="editProductImage">URL de Imagen:</label>
-            <input type="url" id="editProductImage" name="productImage" placeholder="Ej. https://example.com/img.jpg">
+            <input type="url" id="editProductImage" name="Imagen_producto" placeholder="Ej. https://example.com/img.jpg">
 
-            <label for="editSellerName">Nombre del Vendedor:</label>
-            <input type="text" id="editSellerName" name="sellerName" placeholder="Ej. Juan Pérez">
+            <label for="editProductDescription">Descripción:</label>
+            <textarea id="editProductDescription" name="descrop_producto" rows="4" placeholder="Breve descripción del producto..."></textarea>
 
-            <label for="editSellerContact">Teléfono del Vendedor:</label>
-            <input type="tel" id="editSellerContact" name="sellerContact" placeholder="Ej. +57 302 604 0049">
+            <label for="editCategory">Categoría del Producto:</label>
+            <input type="text" id="editCategory" name="categoria_prducto" placeholder="Ej. Tecnología, Moda">
 
-            <label for="editSellerEmail">Correo del Vendedor:</label>
-            <input type="email" id="editSellerEmail" name="sellerEmail" placeholder="Ej. juanperez@email.com">
+            <label for="editSocialMedia">Red Social:</label>
+            <input type="url" id="editSocialMedia" name="redSocial_producto" placeholder="Ej. https://facebook.com/miempresa">
+
+            <label for="editObservations">Observaciones:</label>
+            <textarea id="editObservations" name="observaciones_producto" rows="3" placeholder="Notas adicionales..."></textarea>
 
             <button type="submit">Actualizar Producto</button>
         </form>
     </div>
+
 
     <footer class="footer">
         <p>&copy; 2025 Asociación Madre Tierra. Todos los derechos reservados.</p>

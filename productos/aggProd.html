@@ -3,89 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/aggProd.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #222;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            max-height: 50px;
-            margin-right: 15px;
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-            text-align: center;
-            color: #00b300;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            color: #555;
-        }
-
-        input, textarea, button {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        button {
-            background-color: #00b300;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-        }
-
-        button:hover {
-            background-color: #008f00;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #777;
-        }
-    </style>
 </head>
 
 <body>
@@ -99,31 +19,45 @@
     <div class="container">
         <form id="addProductForm">
             <label for="addProductName">Nombre del Producto:</label>
-            <input type="text" id="addProductName" name="productName" placeholder="Ej. Producto Ecológico" required>
-
-            <label for="addProductDescription">Descripción:</label>
-            <textarea id="addProductDescription" name="productDescription" rows="4"
-                placeholder="Breve descripción del producto..." required></textarea>
-
+            <input type="text" id="addProductName" name="nombre_producto" placeholder="Ej. Producto Ecológico" required>
+    
+            <label for="addFactory">Punto Fábrica Producto:</label>
+            <input type="text" id="addFactory" name="Fabrica_producto" placeholder="Ej. municipio de fabricación" required>
+    
+            <label for="addCoverage">Cobertura de Venta:</label>
+            <input type="text" id="addCoverage" name="covetruraVenta_producto" placeholder="Ej. Nacional, Internacional" required>
+    
+            <label for="addAvailability">Disponibilidad:</label>
+            <input type="text" id="addAvailability" name="disponivilidad_producto" placeholder="Ej. En stock, Bajo pedido" required>
+    
+            <label for="addProductType">Tipo de Producto:</label>
+            <select id="addProductType" name="tipo_producto" required>
+                <option value="bien">Bien</option>
+                <option value="servicio">Servicio</option>
+            </select>
+    
             <label for="addProductPrice">Precio ($):</label>
-            <input type="number" id="addProductPrice" name="productPrice" placeholder="Ej. 50000" required>
-
+            <input type="number" id="addProductPrice" name="precio_producto" placeholder="Ej. 50000" required>
+    
             <label for="addProductImage">URL de Imagen:</label>
-            <input type="url" id="addProductImage" name="productImage" placeholder="Ej. https://example.com/img.jpg"
-                required>
-
-            <label for="addSellerName">Nombre del Vendedor:</label>
-            <input type="text" id="addSellerName" name="sellerName" placeholder="Ej. Juan Pérez" required>
-
-            <label for="addSellerContact">Teléfono del Vendedor:</label>
-            <input type="tel" id="addSellerContact" name="sellerContact" placeholder="Ej. +57 302 604 0049" required>
-
-            <label for="addSellerEmail">Correo del Vendedor:</label>
-            <input type="email" id="addSellerEmail" name="sellerEmail" placeholder="Ej. juanperez@email.com" required>
-
+            <input type="url" id="addProductImage" name="Imagen_producto" placeholder="Ej. https://example.com/img.jpg" required>
+    
+            <label for="addProductDescription">Descripción:</label>
+            <textarea id="addProductDescription" name="descrop_producto" rows="4" placeholder="Breve descripción del producto..." required></textarea>
+    
+            <label for="addCategory">Categoría del Producto:</label>
+            <input type="text" id="addCategory" name="categoria_prducto" placeholder="Ej. Tecnología, Moda" required>
+    
+            <label for="addSocialMedia">Red Social:</label>
+            <input type="url" id="addSocialMedia" name="redSocial_producto" placeholder="Ej. https://facebook.com/miempresa">
+    
+            <label for="addObservations">Observaciones:</label>
+            <textarea id="addObservations" name="observaciones_producto" rows="3" placeholder="Notas adicionales..."></textarea>
+     
             <button type="submit">Guardar Producto</button>
         </form>
     </div>
+    
 
     <footer class="footer">
         <p>&copy; 2025 Asociación Madre Tierra. Todos los derechos reservados.</p>

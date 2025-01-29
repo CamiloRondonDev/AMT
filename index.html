@@ -15,9 +15,8 @@
         </div>
         <nav>
             <a href="#">Inicio</a>
-            <a href="#">Productos</a>
             <a href="#">Contacto</a>
-            <a href="#">Información Legal</a>
+
         </nav>
         <div class="cta-buttons">
             <a href="tel:+573026040049">+57 302 604 0049</a>
@@ -27,119 +26,152 @@
 
     <section class="products-section">
         <h2>Productos Destacados</h2>
-        <div class="product-grid">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <img src="https://lineaeco.com.co/wp-content/uploads/2021/03/IMG-7102-1-150x150.jpg" alt="Producto 1">
-                <div class="product-info">
-                    <h3>Producto 1</h3>
-                    <p>Descripción breve del producto 1.</p>
-                    <p class="price">$50.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
 
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
-                    alt="Producto 2">
-                <div class="product-info">
-                    <h3>Producto 2</h3>
-                    <p>Descripción breve del producto 2.</p>
-                    <p class="price">$80.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
-                    alt="Producto 2">
-                <div class="product-info">
-                    <h3>Producto 2</h3>
-                    <p>Descripción breve del producto 2.</p>
-                    <p class="price">$80.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
-
-
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
-                    alt="Producto 2">
-                <div class="product-info">
-                    <h3>Producto 2</h3>
-                    <p>Descripción breve del producto 2.</p>
-                    <p class="price">$80.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
-                    alt="Producto 2">
-                <div class="product-info">
-                    <h3>Producto 2</h3>
-                    <p>Descripción breve del producto 2.</p>
-                    <p class="price">$80.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
-                    alt="Producto 2">
-                <div class="product-info">
-                    <h3>Producto 2</h3>
-                    <p>Descripción breve del producto 2.</p>
-                    <p class="price">$80.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
-                    alt="Producto 2">
-                <div class="product-info">
-                    <h3>Producto 2</h3>
-                    <p>Descripción breve del producto 2.</p>
-                    <p class="price">$80.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
-
-
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
-                    alt="Producto 2">
-                <div class="product-info">
-                    <h3>Producto 2</h3>
-                    <p>Descripción breve del producto 2.</p>
-                    <p class="price">$80.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <img src="img/imgp-ecologico.jpg" alt="Producto 3">
-                <div class="product-info">
-                    <h3>Producto 3</h3>
-                    <p>Descripción breve del producto 3.</p>
-                    <p class="price">$120.000</p>
-                    <a href="productos/producto.html" class="button">Ver Producto</a>
-                </div>
-            </div>
+        <div class="search-container">
+            <input type="text" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2025 Asociación Madre Tierra. Todos los derechos reservados.</p>
-    </footer>
+        <section class="products-section">
+            <div class="sidebar">
+           
+                <div class="filter-category">
+                    <h4>Tipo</h4>
+                    <select>
+                        <option value="todo">Todo</option>
+                        <option value="tipo1">Bien</option>
+                        <option value="tipo2">Servicio</option>
+                    </select>
+                </div>
+                <div class="filter-category">
+                    <h4>Categoría</h4>
+                    <select>
+                        <option value="categoria1">Categoría 1</option>
+                        <option value="categoria2">Categoría 2</option>
+                        <option value="categoria3">Categoría 3</option>
+                    </select>
+                </div>
+                <div class="filter-category">
+                    <h4>Rango de Precios</h4>
+                    <input type="range" min="0" max="200000" value="100000">
+                    <p>Hasta: $100,000</p>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <img src="https://lineaeco.com.co/wp-content/uploads/2021/03/IMG-7102-1-150x150.jpg"
+                        alt="Producto 1">
+                    <div class="product-info">
+                        <h3>Producto 1</h3>
+                        <p>Descripción breve del producto 1.</p>
+                        <p class="price">$50.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
+                        alt="Producto 2">
+                    <div class="product-info">
+                        <h3>Producto 2</h3>
+                        <p>Descripción breve del producto 2.</p>
+                        <p class="price">$80.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
+                        alt="Producto 2">
+                    <div class="product-info">
+                        <h3>Producto 2</h3>
+                        <p>Descripción breve del producto 2.</p>
+                        <p class="price">$80.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
+                        alt="Producto 2">
+                    <div class="product-info">
+                        <h3>Producto 2</h3>
+                        <p>Descripción breve del producto 2.</p>
+                        <p class="price">$80.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
+                        alt="Producto 2">
+                    <div class="product-info">
+                        <h3>Producto 2</h3>
+                        <p>Descripción breve del producto 2.</p>
+                        <p class="price">$80.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
+                        alt="Producto 2">
+                    <div class="product-info">
+                        <h3>Producto 2</h3>
+                        <p>Descripción breve del producto 2.</p>
+                        <p class="price">$80.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
+                        alt="Producto 2">
+                    <div class="product-info">
+                        <h3>Producto 2</h3>
+                        <p>Descripción breve del producto 2.</p>
+                        <p class="price">$80.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://anthropocenemagazine.org/wp-content/uploads/2020/06/think-green-bag.jpg"
+                        alt="Producto 2">
+                    <div class="product-info">
+                        <h3>Producto 2</h3>
+                        <p>Descripción breve del producto 2.</p>
+                        <p class="price">$80.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <img src="img/imgp-ecologico.jpg" alt="Producto 3">
+                    <div class="product-info">
+                        <h3>Producto 3</h3>
+                        <p>Descripción breve del producto 3.</p>
+                        <p class="price">$120.000</p>
+                        <a href="productos/producto.html" class="button">Ver Producto</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Asociación Madre Tierra. Todos los derechos reservados.</p>
+        </footer>
 </body>
 
 </html>
