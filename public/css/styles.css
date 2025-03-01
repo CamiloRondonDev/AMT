@@ -1,0 +1,265 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img {
+    height: 60px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00b300;
+}
+
+.cta-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.cta-buttons a {
+    background-color: #00b300;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.cta-buttons a:hover {
+    background-color: #008f00;
+}
+
+.products-section {
+    padding: 20px;
+}
+
+.products-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    width: 100%; /* Ajustar al tamaño del contenedor */
+    max-width: 300px; /* Puedes poner el tamaño máximo que desees */
+    margin: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Para evitar que la imagen se salga del borde */
+    background-color: #fff;
+}
+
+.product-image {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 200px; /* Puedes ajustar el tamaño según lo necesites */
+    object-fit: cover; /* Hace que la imagen se recorte si es necesario para llenar el espacio */
+    object-position: center; /* Centra la imagen si se recorta */
+}
+
+.product-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.product-info .price {
+    font-size: 1.5em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.product-info .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.product-info .button:hover {
+    background-color: #0056b3;
+}
+
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+/* header - Filtros */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(226, 241, 234);
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+   
+}
+
+.search-container input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.search-container input:focus {
+    border-color: #008f00;
+}
+
+.search-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #45a049;
+}
+
+/* Sidebar - Filtros */
+/* Sidebar - Filtros */
+.sidebar {
+    width: 100%;
+    padding: 10px; /* Reducimos el padding para que la barra sea menos alta */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 2%;
+}
+
+/* Título de los filtros */
+.sidebar h3 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px; /* Reducimos el margen para que ocupe menos espacio */
+    font-size: 22px; /* Reducimos el tamaño de fuente */
+    color: #4CAF50;
+}
+
+/* Estilo para las categorías de filtros */
+.filter-category {
+    width: 30%;
+    margin-bottom: 10px; /* Reducimos el margen inferior para disminuir la altura total */
+}
+
+/* Estilo para los títulos de cada filtro */
+.filter-category h4 {
+    font-size: 14px; /* Reducimos el tamaño de la fuente del título */
+    margin-bottom: 5px; /* Reducimos el margen inferior */
+    color: #333;
+}
+
+/* Estilo para los select y range */
+.filter-category select,
+.filter-category input[type="range"] {
+    width: 100%;
+    padding: 8px; /* Reducimos el padding para que los controles sean más compactos */
+    font-size: 12px; /* Reducimos el tamaño de la fuente */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+/* Cambio de color en el foco de los inputs */
+.filter-category select:focus,
+.filter-category input[type="range"]:focus {
+    border-color: #4CAF50;
+}
+
+/* Estilo para el rango de precios */
+.filter-category input[type="range"] {
+    margin-top: 5px; /* Reducimos el margen superior */
+}
+
+/* Estilo para el texto del rango de precios */
+.filter-category p {
+    font-size: 12px; /* Reducimos el tamaño de la fuente */
+    margin-top: 5px;
+    text-align: right;
+    color: #555;
+}
+
+/* Asegurarse de que todos los filtros estén alineados horizontalmente */
+.filter-category {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+/* Evitar que los elementos se desborden */
+@media (max-width: 768px) {
+    .sidebar {
+        flex-direction: column;
+    }
+
+    .filter-category {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+

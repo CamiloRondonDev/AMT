@@ -1,0 +1,143 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    background-color: #222;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+header img {
+    height: 60px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00b300;
+}
+
+.cta-buttons a {
+    background-color: #00b300;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.cta-buttons a:hover {
+    background-color: #008f00;
+}
+
+/* Contenedor del login */
+.login-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Aumentamos el ancho */
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Estilo del formulario de login */
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 26px; /* Hicimos el título un poco más grande */
+}
+
+/* Estilo de los grupos de inputs */
+.input-group {
+    margin-bottom: 20px; /* Aumentamos el margen */
+    text-align: left;
+}
+
+/* Estilo de las etiquetas */
+.input-group label {
+    font-size: 16px; /* Hicimos las etiquetas un poco más grandes */
+    color: #333;
+}
+
+/* Estilo de los campos de entrada */
+.input-group input {
+    width: 100%;
+    padding: 12px; /* Aumentamos el padding */
+    font-size: 16px; /* Aumentamos el tamaño de fuente */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Estilo del botón de login */
+.btn-login {
+    width: 100%;
+    padding: 14px; /* Aumentamos el padding */
+    background-color: #008f00; /* Color del botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px; /* Aumentamos el tamaño de la fuente */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto de hover para el botón */
+.btn-login:hover {
+    background-color: #006400; /* Un verde más oscuro */
+}
+
+/* Estilo para los botones de crear cuenta y recuperar contraseña */
+.login-options {
+    margin-top: 25px; /* Aumentamos el margen */
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Aumentamos el espacio entre los botones */
+}
+
+.login-options a {
+    color: #008f00;
+    font-size: 16px; /* Aumentamos el tamaño de la fuente */
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    color: #006400;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .login-container {
+        width: 90%; /* Hacer el login más ancho en pantallas pequeñas */
+        padding: 25px; /* Ajustamos el padding para pantallas pequeñas */
+    }
+}
