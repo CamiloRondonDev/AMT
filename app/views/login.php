@@ -3,7 +3,7 @@
 
 <!-- Contenedor del Login -->
 <div class="login-container">
-<form class="login-form" action="login.php" method="POST">
+<form id="formLogin" class="login-form" action="#" method="POST">
     <h2>Iniciar sesión</h2>
     <div class="input-group">
         <label for="username">Usuario</label>

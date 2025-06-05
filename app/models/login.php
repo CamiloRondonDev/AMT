@@ -1,31 +1,36 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require __DIR__ . './../../config/bd.php'; // Archivo de conexión a la BD
 
-// Verifica si se enviaron los datos correctamente
+require __DIR__ . './../../config/bd.php'; // Asegúrate de que la ruta sea correcta
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $correo = trim($_POST['username'] ?? '');
+    $contrasena = trim($_POST['password'] ?? '');
 
-    if (empty($username) || empty($password)) {
+    if (empty($correo) || empty($contrasena)) {
         echo json_encode(["success" => false, "message" => "Todos los campos son obligatorios."]);
         exit;
     }
 
-    // Consulta en la BD para obtener el usuario
-    $stmt = $conn->prepare("SELECT id, username, password FROM usuarios WHERE username = ?");
-    $stmt->bind_param("s", $username);
+    // Consulta segura a la base de datos
+    $stmt = $conn->prepare("SELECT id_usu, pass_usu FROM usuarios WHERE correo_usu = ?");
+    if (!$stmt) {
+        echo json_encode(["success" => false, "message" => "Error en la preparación de la consulta."]);
+        exit;
+    }
+
+    $stmt->bind_param("s", $correo);
     $stmt->execute();
     $resultado = $stmt->get_result();
 
     if ($resultado->num_rows === 1) {
         $usuario = $resultado->fetch_assoc();
 
-        // Verifica la contraseña con password_verify()
-        if (password_verify($password, $usuario['password'])) {
-            $_SESSION['user_id'] = $usuario['id'];
-            $_SESSION['username'] = $usuario['username'];
+        // Verificar contraseña usando hash
+        if (password_verify($contrasena, $usuario['pass_usu'])) {
+            $_SESSION['id_usu'] = $usuario['id_usu'];
+
             echo json_encode(["success" => true, "message" => "Inicio de sesión exitoso."]);
         } else {
             echo json_encode(["success" => false, "message" => "Contraseña incorrecta."]);
@@ -37,6 +42,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 } else {
-    echo json_encode(["success" => false, "message" => "Método no permitido."]);
+    echo json_encode(['success' => false, 'message' => 'Solo se permite el método POST.']);
 }
-?>
