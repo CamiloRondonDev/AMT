@@ -84,3 +84,11 @@ header img {
 .buy-button:hover {
     background-color: #008f00;
 }
+
+.product img {
+  width: 700px;       /* ancho fijo */
+  height: 700px;      /* alto fijo */
+  object-fit: cover;  /* recorta la imagen para llenar el espacio sin deformar */
+  display: block;     /* elimina espacios extra */
+  border-radius: 8px; /* opcional: bordes redondeados */
+}
