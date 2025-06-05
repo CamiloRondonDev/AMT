@@ -1,26 +1,33 @@
 <?php
-class ProductoModel {
-    private $conn;
+header('Content-Type: application/json');
+require __DIR__ . './../../config/bd.php';
 
-    public function __construct() {
-        require __DIR__ . '/../../config/bd.php';
-        $this->conn = $conn;
-    }
+// Obtener el ID del producto desde la URL (por ejemplo, ?id=1)
+ $id_prod =  $_GET['id']; // Obtenemos el id del producto desde la URL
+ //$id_prod = 3;
 
-    public function obtenerTodosLosProductos() {
-        $sql = "SELECT * FROM productos";
-        $result = $this->conn->query($sql);
-
-        $productos = [];
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $productos[] = $row;
-            }
-        }
-
-        $this->conn->close();
-
-        return $productos;
-    }
+// Si no se pasa un ID válido, devolvemos un error
+if ($id_prod === null) {
+    echo json_encode(['error' => 'ID del producto no proporcionado']);
+    exit;
 }
+
+// Consulta SQL para obtener el producto con el ID específico
+$sql = "SELECT * FROM productos WHERE id_prod = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_prod);  // "i" para integer
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+// Comprobamos si se encontró el producto
+if ($result->num_rows > 0) {
+    $producto = $result->fetch_assoc();
+    echo json_encode($producto);
+} else {
+    echo json_encode(['error' => 'Producto no encontrado']);
+}
+
+$stmt->close();
+$conn->close();
+?>
