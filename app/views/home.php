@@ -33,23 +33,14 @@
                 </div>
             </div>
 
-<div id="productos-container">
-    <?php if (!empty($productos)): ?>
-        <?php foreach ($productos as $producto): ?>
-            <div class="product-card">
-                <img class="product-image" src="<?= htmlspecialchars($producto['img_prod']) ?>" alt="<?= htmlspecialchars($producto['fabrica_prod']) ?>">
-                <div class="product-info">
-                    <h3><?= htmlspecialchars($producto['nom_prod']) ?></h3>
-                    <p><?= htmlspecialchars($producto['desc_prod']) ?></p>
-                    <p class="price">$<?= htmlspecialchars($producto['precio_prod']) ?></p>
-                    <a href="products.php?id=<?= htmlspecialchars($producto['id_prod']) ?>" class="button">Ver Producto</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No hay productos disponibles.</p>
-    <?php endif; ?>
-</div>
+
+    <div class="product-grid" id="productos-container"  >
+        <!-- <div id="productos-container">
+           Aquí se cargarán los productos dinámicamente con AJAX 
+        </div> -->
+
+        
+    </div>
 </section>
 
 <?php require_once 'footer.php'; ?>
