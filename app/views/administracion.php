@@ -3,124 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/amt/public/css/administracion.css">
+<link rel="icon" href="/amt/public/img/IDENTIFICADOR SIN TEXTO-08.png" type="image/png">
 <title>Panel de Administración</title>
-<style>
-  /* Reset y básicos */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  /* Sidebar */
-  #sidebar {
-    width: 250px;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    transition: transform 0.3s ease;
-    padding-top: 60px;
-    position: fixed;
-    height: 100%;
-    overflow-y: auto;
-  }
-  #sidebar.hidden {
-    transform: translateX(-100%);
-  }
-
-  #sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  #sidebar ul li {
-    padding: 15px 20px;
-    cursor: pointer;
-  }
-
-  #sidebar ul li:hover {
-    background-color: #008F00;
-  }
-
-  /* Header */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #008F00;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    justify-content: space-between;
-    z-index: 1000;
-  }
-
-  /* Botón hamburguesa */
-  #btnToggleSidebar {
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  /* Icono tuerca */
-  #btnSettings {
-    font-size: 22px;
-    cursor: pointer;
-  }
-
-  /* Contenido principal */
-  #content {
-    margin-left: 250px;
-    padding: 70px 20px 20px 20px;
-    flex-grow: 1;
-    transition: margin-left 0.3s ease;
-  }
-  #content.full {
-    margin-left: 0;
-  }
-
-  /* Modal para cambiar contraseña */
-  #modalChangePass {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right:0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-  }
-  #modalChangePass.active {
-    display: flex;
-  }
-  #modalChangePass .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 6px;
-    width: 300px;
-  }
-  #modalChangePass label {
-    display: block;
-    margin: 10px 0 5px;
-  }
-  #modalChangePass input[type="password"] {
-    width: 100%;
-    padding: 8px;
-  }
-  #modalChangePass button {
-    margin-top: 15px;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-  }
-</style>
 </head>
 <body>
 
@@ -135,10 +20,18 @@
 
 <!-- Header -->
 <header>
-  <div id="btnToggleSidebar">&#9776;</div> <!-- ☰ -->
-  <div>Panel de Administración</div>
-  <div id="btnSettings" title="Cambiar contraseña">&#9881;</div> <!-- ⚙ -->
+  <div class="header-left">
+    <img src="/amt/public/img/para banner.jpg" alt="Logo" style="height: 45px;">
+    <div id="btnToggleSidebar">&#9776;</div> <!-- ☰ -->
+  </div>
+  <div class="header-center">
+    Panel de Administración
+  </div>
+  <div class="header-right">
+    <div id="btnSettings" title="Cambiar contraseña">&#9881;</div> <!-- ⚙ -->
+  </div>
 </header>
+
 
 <!-- Contenido principal -->
 <main id="content">
