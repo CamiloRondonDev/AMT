@@ -3,8 +3,10 @@ $(document).ready(function () {
         e.preventDefault(); // Evita recargar la página
 
         const datos = {
-            username: $('#username').val(),
-            password: $('#password').val()
+            //username: $('#username').val(),
+            //password: $('#password').val()
+            username: 'camiloanla@gmail.com',
+            password: 'camilo123*'
         };
 
         $.ajax({
@@ -15,7 +17,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     // Redirige o muestra mensaje
-                    window.location.href = 'dashboard.php';
+                    window.location.href = 'administracion.php';
                 } else {
                     alert('Error: ' + response.message);
                 }
