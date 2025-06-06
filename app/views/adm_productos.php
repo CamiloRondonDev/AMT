@@ -26,7 +26,7 @@
 </head>
 <body>
 
-  <h2>Productos Disponibles</h2>
+  <h2>Todos los productos</h2>
   <table id="tablaProductos">
     <thead>
       <tr>
