@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="/amt/public/css/administracion.css">
-<link rel="icon" href="/amt/public/img/IDENTIFICADOR SIN TEXTO-08.png" type="image/png">
-<title>Panel de Administración</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/amt/public/css/administracion.css">
+  <link rel="icon" href="/amt/public/img/IDENTIFICADOR SIN TEXTO-08.png" type="image/png">
+  <title>Panel de Administración</title>
 </head>
 <body>
 
 <!-- Sidebar -->
 <nav id="sidebar">
   <ul>
-    <li>Usuarios</li>
-    <li>Productos</li>
-    <li>Informes</li>
+    <li><a class="links" href="#" data-url="/AMT/app/views/usuarios.php">USUARIOS</a></li>
+    <li><a class="links" href="#" data-url="/AMT/app/views/adm_productos.php">PRODUCTOS</a></li>
+    <li><a class="links" href="#" data-url="/AMT/views/informes.php">PROVEEDORES</a></li>
+    <li><a class="links" href="#" data-url="/AMT/views/informes.php">INFORMES</a></li>
   </ul>
 </nav>
 
@@ -22,21 +23,22 @@
 <header>
   <div class="header-left">
     <img src="/amt/public/img/para banner.jpg" alt="Logo" style="height: 45px;">
-    <div id="btnToggleSidebar">&#9776;</div> <!-- ☰ -->
+    <div id="btnToggleSidebar">&#9776;</div>
   </div>
   <div class="header-center">
     Panel de Administración
   </div>
   <div class="header-right">
-    <div id="btnSettings" title="Cambiar contraseña">&#9881;</div> <!-- ⚙ -->
+    <div id="btnSettings" title="Cambiar contraseña">&#9881;</div>
   </div>
 </header>
 
-
 <!-- Contenido principal -->
 <main id="content">
-  <h1>Bienvenido al panel de administración</h1>
-  <p>Selecciona una opción del menú.</p>
+  <div id="panel-content">
+    <h1>Bienvenido al panel de administración</h1>
+    <p>Selecciona una opción del menú.</p>
+  </div>
 </main>
 
 <!-- Modal cambiar contraseña -->
@@ -64,14 +66,15 @@
   const modalChangePass = document.getElementById('modalChangePass');
   const closeModal = document.getElementById('closeModal');
   const formChangePass = document.getElementById('formChangePass');
+  const panelContent = document.getElementById('panel-content');
 
-  // Mostrar / ocultar sidebar al hacer clic en hamburguesa
+  // Mostrar / ocultar sidebar
   btnToggleSidebar.addEventListener('click', () => {
     sidebar.classList.toggle('hidden');
     content.classList.toggle('full');
   });
 
-  // Mostrar modal cambio de contraseña
+  // Mostrar modal cambio contraseña
   btnSettings.addEventListener('click', () => {
     modalChangePass.classList.add('active');
   });
@@ -81,7 +84,7 @@
     modalChangePass.classList.remove('active');
   });
 
-  // Manejar envío de cambio de contraseña (aquí debes hacer el fetch o submit real)
+  // Envío de cambio de contraseña
   formChangePass.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -89,17 +92,35 @@
     const newPass = formChangePass.newPass.value;
     const confirmPass = formChangePass.confirmPass.value;
 
-    if(newPass !== confirmPass) {
+    if (newPass !== confirmPass) {
       alert("Las contraseñas nuevas no coinciden.");
       return;
     }
 
-    // Aquí iría la llamada al backend para cambiar la contraseña
     alert("Aquí va la lógica para cambiar la contraseña.");
-
-    // Cerrar modal
     modalChangePass.classList.remove('active');
     formChangePass.reset();
+  });
+
+  // Cargar vistas dinámicamente en el panel
+  document.querySelectorAll('#sidebar a[data-url]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const url = this.getAttribute('data-url');
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error("Error al cargar la vista.");
+          return response.text();
+        })
+        .then(html => {
+          panelContent.innerHTML = html;
+        })
+        .catch(err => {
+          panelContent.innerHTML = "<p>Error cargando el contenido.</p>";
+          console.error(err);
+        });
+    });
   });
 </script>
 

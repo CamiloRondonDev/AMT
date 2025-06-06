@@ -40,7 +40,7 @@ nav a:hover {
 }
 
 .cta-buttons a {
-    background-color: #00b300;
+     background: linear-gradient(to left, #0d5c27, #3da60d);
     color: white;
     padding: 8px 15px;
     text-decoration: none;
@@ -50,7 +50,10 @@ nav a:hover {
 }
 
 .cta-buttons a:hover {
-    background-color: #008f00;
+    background: linear-gradient(to left, #0d5c27, #3da60d);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* sombra más notoria */
+    transform: translateY(-2px); /* levanta el botón visualmente */
+    transition: all 0.2s ease-in-out; /* suaviza el efecto */
 }
 
 .products-section {
@@ -106,7 +109,7 @@ nav a:hover {
 .product-info .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background: linear-gradient(to left, #0d5c27, #3da60d);
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
@@ -114,8 +117,12 @@ nav a:hover {
 }
 
 .product-info .button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to left, #0d5c27, #3da60d);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* sombra más notoria */
+    transform: translateY(-2px); /* levanta el botón visualmente */
+    transition: all 0.2s ease-in-out; /* suaviza el efecto */
 }
+
 
 
 footer {
@@ -157,7 +164,7 @@ footer {
 }
 
 .search-container button {
-    background-color: #4CAF50;
+    background: linear-gradient(to left, #0d5c27, #3da60d);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -169,7 +176,10 @@ footer {
 }
 
 .search-container button:hover {
-    background-color: #45a049;
+    background: linear-gradient(to left, #0d5c27, #3da60d);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* sombra más notoria */
+    transform: translateY(-2px); /* levanta el botón visualmente */
+    transition: all 0.2s ease-in-out; /* suaviza el efecto */
 }
 
 /* Sidebar - Filtros */

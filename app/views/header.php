@@ -17,7 +17,7 @@
         <a href="#">Contacto</a>
     </nav>
     <div class="cta-buttons">
-        <a href="tel:+573026040049">+57 302 604 0049</a>
+        <!-- <a href="tel:+573026040049">+57 302 604 0049</a> -->
         <a href="../views/login.php">Login</a>
     </div>
 </header>
