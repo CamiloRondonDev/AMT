@@ -58,6 +58,56 @@
   </div>
 </div>
 
+<<<<<<< Updated upstream
  <script src="../../public/js/administracion.js"></script>
+=======
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+  const content = document.getElementById('content');
+  const btnSettings = document.getElementById('btnSettings');
+  const modalChangePass = document.getElementById('modalChangePass');
+  const closeModal = document.getElementById('closeModal');
+  const formChangePass = document.getElementById('formChangePass');
+
+  // Mostrar / ocultar sidebar al hacer clic en hamburguesa
+  btnToggleSidebar.addEventListener('click', () => {
+    sidebar.classList.toggle('hidden');
+    content.classList.toggle('full');
+  });
+
+  // Mostrar modal cambio de contraseña
+  btnSettings.addEventListener('click', () => {
+    modalChangePass.classList.add('active');
+  });
+
+  // Cerrar modal
+  closeModal.addEventListener('click', () => {
+    modalChangePass.classList.remove('active');
+  });
+
+  // Manejar envío de cambio de contraseña 
+  formChangePass.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const currentPass = formChangePass.currentPass.value;
+    const newPass = formChangePass.newPass.value;
+    const confirmPass = formChangePass.confirmPass.value;
+
+    if(newPass !== confirmPass) {
+      alert("Las contraseñas nuevas no coinciden.");
+      return;
+    }
+
+    // Aquí iría la llamada al backend para cambiar la contraseña
+    alert("Aquí va la lógica para cambiar la contraseña.");
+
+    // Cerrar modal
+    modalChangePass.classList.remove('active');
+    formChangePass.reset();
+  });
+</script>
+
+>>>>>>> Stashed changes
 </body>
 </html>

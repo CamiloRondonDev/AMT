@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
-require __DIR__ . './../../config/bd.php'; // Asegúrate de que la ruta sea correcta
+require __DIR__ . './../../config/bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $correo = trim($_POST['username'] ?? '');
@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Consulta segura a la base de datos
     $stmt = $conn->prepare("SELECT id_usu, pass_usu FROM usuarios WHERE correo_usu = ?");
     if (!$stmt) {
         echo json_encode(["success" => false, "message" => "Error en la preparación de la consulta."]);

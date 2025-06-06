@@ -7,7 +7,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-        url: '/amt/app/models/obtenerProdId.php', // Ajusta esta ruta a la correcta en tu servidor
+        url: '/amt/app/models/obtenerProdId.php', // ruta para obtener productos
         type: 'GET',
         data: { id: productoId },
         dataType: 'json',
@@ -15,7 +15,6 @@ $(document).ready(function() {
             if (response.error) {
                 alert('Producto no encontrado');
             } else {
-                // Actualizar los datos del producto en la página
                 $('#productName').text(response.nom_prod);
                 $('#productFactory').text(response.fabrica_prod);
                 $('#productDescription').text(response.desc_prod);
@@ -29,11 +28,11 @@ $(document).ready(function() {
                 $('#sellerContact').text(response.contacto_vendedor_prod);
                 $('#sellerEmail').text(response.email_vendedor_prod);
 
-                // Si existe una imagen del producto, se muestra
+                // renderizar imagen del producto
                 if (response.img_prod) {
                     $('#productImage').attr('src', response.img_prod);
                 } else {
-                    $('#productImage').attr('src', 'default-image.jpg'); // Imagen por defecto si no hay imagen
+                    $('#productImage').attr('src', 'default-image.jpg');
                 }
             }
         },

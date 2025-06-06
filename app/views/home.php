@@ -45,8 +45,5 @@
 
 <?php require_once 'footer.php'; ?>
 
-<!-- Cargar jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Enlace a tu script JS -->
 <script src="../../public/js/home.js"></script>
