@@ -151,3 +151,10 @@ header {
     text-decoration:  none;
     color: white;
   }
+#panel-content {
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Permite scroll horizontal y vertical */
+  padding: 20px;
+  box-sizing: border-box;
+}
