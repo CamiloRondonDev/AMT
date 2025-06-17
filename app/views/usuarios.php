@@ -11,7 +11,7 @@
     <h2>Lista de Usuarios</h2>
     <div class="acciones">
       <button id="btnExportarExcel">📥 Exportar a Excel</button>
-      <button id="btnAgregarProducto">➕ Agregar Producto</button>
+      <button id="btnAgregarUsuario">➕ Agregar Nuevo Usuario</button>
     </div>
 <div class="tabla-scroll">
   <table id="tablaUsuarios">

@@ -43,9 +43,14 @@
     <form id="formNuevoProducto">
       <input type="text" name="nombre" placeholder="Nombre del producto" required>
       <input type="text" name="fabrica" placeholder="Fábrica" required>
-      <textarea name="descripcion" placeholder="Descripción" required></textarea>
-      <input type="number" name="precio" placeholder="Precio" required>
+      <input type="text" name="cover_venta" placeholder="Covertura de venta" required>
       <input type="text" name="disponibilidad" placeholder="Disponibilidad" required>
+      <input name="tipo_prod" placeholder="Tipo de Producto" required>
+      <input type="number" name="precio" placeholder="Precio" required>
+      <textarea type="text" name="descripcion" placeholder="Descripción" required></textarea>
+      <input type="text" name="categoria" placeholder="Categoria" required>
+      <textarea type="text" name="observacion" placeholder="Observación" required></textarea>
+
       <button type="submit">Guardar</button>
     </form>
   </div>
