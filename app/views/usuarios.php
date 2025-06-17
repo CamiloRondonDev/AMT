@@ -3,29 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/amt/public/css/adm_usuarios.css">
     <title>Document</title>
-      <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background-color: #3da60d;
-      color: white;
-    }
-    tr:hover {
-      background-color: #f1f1f1;
-    }
-  </style>
+
 </head>
 <body>
     <h2>Lista de Usuarios</h2>
+    <div class="acciones">
+      <button id="btnExportarExcel">📥 Exportar a Excel</button>
+      <button id="btnAgregarProducto">➕ Agregar Producto</button>
+    </div>
 <div class="tabla-scroll">
   <table id="tablaUsuarios">
     <thead>
