@@ -31,6 +31,7 @@ if ($result->num_rows > 0) {
     echo json_encode(['error' => 'Producto no encontrado']);
 }
 
+
 $stmt->close();
 $conn->close();
 ?>
