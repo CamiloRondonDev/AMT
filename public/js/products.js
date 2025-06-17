@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const productoId = new URLSearchParams(window.location.search).get('id'); // Obtener el id desde la URL
+    const productoId = new URLSearchParams(window.location.search).get('id');
 
     if (!productoId) {
         alert('ID del producto no especificado.');
@@ -7,7 +7,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-        url: '/amt/app/models/obtenerProdId.php', // ruta para obtener productos
+        url: '/amt/app/models/obtenerProdId.php',
         type: 'GET',
         data: { id: productoId },
         dataType: 'json',
@@ -28,12 +28,19 @@ $(document).ready(function() {
                 $('#sellerContact').text(response.tel_usu);
                 $('#sellerEmail').text(response.correo_usu);
 
-                // renderizar imagen del producto
+                // Imagen del producto
                 if (response.img_prod) {
                     $('#productImage').attr('src', response.img_prod);
                 } else {
                     $('#productImage').attr('src', 'default-image.jpg');
                 }
+
+                // Redirección a WhatsApp Web
+                const telefonoVendedor = response.tel_usu.startsWith('57') ? response.tel_usu : '57' + response.tel_usu;
+                const mensaje = encodeURIComponent(`Hola, estoy interesado en tu producto: ${response.nom_prod}`);
+                const urlWhatsApp = `https://api.whatsapp.com/send?phone=${telefonoVendedor}&text=${mensaje}`;
+                $('#buyButton').attr('href', urlWhatsApp).attr('target', '_blank');
+
             }
         },
         error: function(xhr, status, error) {

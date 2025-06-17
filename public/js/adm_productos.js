@@ -16,8 +16,8 @@
                 <td>${producto.desc_prod}</td>
                 <td>${producto.dispo_prod}</td>
                 <td>$${producto.precio_prod}</td>
-                <td>${producto.vendedor_prod}</td>
-                <td>${producto.contacto_vendedor_prod}</td>
+                <td>${producto.nom_usu}</td>
+                <td style="width: 140px;" >${producto.tel_usu}</td>
                 </tr>
             `;
             tbody.append(fila);

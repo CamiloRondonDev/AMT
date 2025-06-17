@@ -29,7 +29,7 @@
                 <p><strong>Correo:</strong> <span id="sellerEmail">Cargando...</span></p>
             </div>
     
-            <a href="#" class="buy-button">Comprar Ahora</a>
+            <a href="#" id="buyButton" class="buy-button">Comprar Ahora</a>
         </div>
     </div>
 </div>
