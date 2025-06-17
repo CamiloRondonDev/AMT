@@ -1,55 +1,63 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+/* No toques directamente body ni html, para evitar conflictos globales */
+.registro-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-}
-
-form {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-}
-
-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 40px 20px;
+  min-height: calc(100vh - 200px); /* deja espacio para header y footer */
   box-sizing: border-box;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+.registro-container h2 {
+  margin-bottom: 20px;
+  color: #333;
 }
 
-button:hover {
+form#registroForm {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form#registroForm input {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+form#registroForm input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+form#registroForm button {
+  padding: 12px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form#registroForm button:hover {
   background-color: #0056b3;
 }
 
 #respuesta {
-  margin-top: 15px;
-  text-align: center;
+  margin-top: 20px;
   font-weight: bold;
-  color: green;
+  color: #d8000c;
+  text-align: center;
 }
