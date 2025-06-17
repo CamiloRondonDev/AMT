@@ -41,14 +41,16 @@
     <span class="cerrar">&times;</span>
     <h3>Agregar nuevo producto</h3>
     <form id="formNuevoProducto">
-      <input type="text" name="nombre" placeholder="Nombre del producto" required>
+      <input type="text" name="nombre_prod" placeholder="Nombre del producto" required>
       <input type="text" name="fabrica" placeholder="Fábrica" required>
-      <input type="text" name="cover_venta" placeholder="Covertura de venta" required>
+      <input type="text" name="cobertura" placeholder="Covertura de venta" required>
       <input type="text" name="disponibilidad" placeholder="Disponibilidad" required>
-      <input name="tipo_prod" placeholder="Tipo de Producto" required>
+      <input name="tipo" placeholder="Tipo de Producto" required>
       <input type="number" name="precio" placeholder="Precio" required>
       <textarea type="text" name="descripcion" placeholder="Descripción" required></textarea>
       <input type="text" name="categoria" placeholder="Categoria" required>
+      <input type="text" name="proveedor" placeholder="Proveedor" required>
+      <input type="text" name="img" placeholder="imagen" required>
       <textarea type="text" name="observacion" placeholder="Observación" required></textarea>
 
       <button type="submit">Guardar</button>

@@ -11,7 +11,7 @@
     <h2>Lista de Usuarios</h2>
     <div class="acciones">
       <button id="btnExportarExcel">📥 Exportar a Excel</button>
-      <button id="btnAgregarUsuario">➕ Agregar Nuevo Usuario</button>
+      <button href="create_user.php"><a style="text-decoration: none; color: white;" href="create_user.php">➕ Agregar Nuevo Usuario</a></button>
     </div>
 <div class="tabla-scroll">
   <table id="tablaUsuarios">
