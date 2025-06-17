@@ -21,12 +21,12 @@ $(document).ready(function() {
                 $('#productAvailability').text(response.dispo_prod);
                 $('#productType').text(response.tipo_prod);
                 $('#productCategory').text(response.cat_prod);
-                $('#productSocial').attr('href', response.red_social_prod).text(response.red_social_prod);
+                $('#productSocial').attr('href', response.red_social).attr('target', '_blank').text('Visitar perfil');
                 $('#productObservations').text(response.obser_prod);
                 $('#productPrice').text('$' + response.precio_prod);
-                $('#sellerName').text(response.vendedor_prod);
-                $('#sellerContact').text(response.contacto_vendedor_prod);
-                $('#sellerEmail').text(response.email_vendedor_prod);
+                $('#sellerName').text(response.nom_usu);
+                $('#sellerContact').text(response.tel_usu);
+                $('#sellerEmail').text(response.correo_usu);
 
                 // renderizar imagen del producto
                 if (response.img_prod) {

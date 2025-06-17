@@ -10,7 +10,7 @@
 <body>
 
 <main class="registro-container">
-  <h2>Formulario de Registro</h2>
+  <h2>Registro Nuevo Usuario</h2>
   <form id="registroForm">
     <input type="text" name="nom_usu" placeholder="Nombre" required>
     <input type="text" name="apell_usus" placeholder="Apellido" required>

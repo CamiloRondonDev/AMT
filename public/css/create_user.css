@@ -36,13 +36,13 @@ form#registroForm input {
 }
 
 form#registroForm input:focus {
-  border-color: #007BFF;
+  border-color:  #3da60d;
   outline: none;
 }
 
 form#registroForm button {
   padding: 12px;
-  background-color: #007BFF;
+  background: linear-gradient(to left, #0d5c27, #3da60d);
   color: #fff;
   border: none;
   font-weight: bold;
@@ -52,7 +52,10 @@ form#registroForm button {
 }
 
 form#registroForm button:hover {
-  background-color: #0056b3;
+    background: linear-gradient(to left, #0d5c27, #3da60d);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* sombra más notoria */
+    transform: translateY(-2px); /* levanta el botón visualmente */
+    transition: all 0.2s ease-in-out; /* suaviza el efecto */
 }
 
 #respuesta {
