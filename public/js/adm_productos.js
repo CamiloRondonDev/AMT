@@ -75,8 +75,10 @@ $(document).ready(function() {
         });
     });
 
-    // Exportar a Excel
-    $('#btnExportarExcel').click(function () {
-        window.location.href = '/amt/app/models/exportar_excel.php';
-    });
+  // Exportar a Excel
+  document.getElementById('btnExportarProductos').addEventListener('click', function () {
+    const tabla = document.getElementById('tablaProductos');
+    const wb = XLSX.utils.table_to_book(tabla, { sheet: "Productos" });
+    XLSX.writeFile(wb, 'productos.xlsx');
+  });
 });

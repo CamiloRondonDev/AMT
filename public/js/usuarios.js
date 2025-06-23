@@ -24,4 +24,15 @@ $(document).ready(function() {
       console.error('Error al obtener usuarios:', error);
     }
   });
+  document.getElementById('btnExportarExcel').addEventListener('click', function () {
+  // Selecciona la tabla
+  const tabla = document.getElementById('tablaUsuarios');
+
+  // Convierte la tabla a una hoja de Excel
+  const wb = XLSX.utils.table_to_book(tabla, { sheet: "Usuarios" });
+
+  // Exporta el archivo .xlsx
+  XLSX.writeFile(wb, 'usuarios.xlsx');
+});
+
 });

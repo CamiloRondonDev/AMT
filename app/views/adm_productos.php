@@ -11,7 +11,7 @@
   <h2>Todos los productos</h2>
 
   <div class="acciones">
-    <button id="btnExportarExcel">📥 Exportar a Excel</button>
+    <button id="btnExportarProductos">📥 Exportar a Exce</button>
     <button id="btnAgregarProducto">➕ Agregar Producto</button>
   </div>
 
@@ -57,7 +57,8 @@
     </form>
   </div>
 </div>
-
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../public/js/adm_productos.js"></script>
 
