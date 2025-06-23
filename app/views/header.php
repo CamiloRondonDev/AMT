@@ -10,7 +10,7 @@
 <body>
 <header>
     <div >
-       <img src="\amt\public\img\para banner.jpg" alt="Logo Madre Tierra">
+       <img src="\amt\public\img\header.png" alt="Logo Madre Tierra">
     </div>
     <nav>
         <a href="home.php">Inicio</a>

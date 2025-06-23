@@ -1,7 +1,7 @@
 <?php require_once 'header.php'; ?>
 <link rel="stylesheet" href="/amt/public/css/login.css">
 
-<!-- Contenedor del Login -->
+<main>
 <div class="login-container">
     <form id="formLogin" class="login-form" action="#" method="POST">
         <h2>Iniciar sesión</h2>
@@ -22,6 +22,8 @@
     </form>
 
 </div>
+
+</main>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../public/js/login.js"></script>

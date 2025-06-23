@@ -31,7 +31,7 @@ $(document).ready(function () {
             console.error("Error al obtener productos:", error);
             $("#productos-container").html("<p>Error al cargar productos.</p>");
 
-            
+
         }
     });
 });

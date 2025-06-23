@@ -1,0 +1,51 @@
+.footer {
+    background-color: #1a1717;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    margin-top: auto;
+}
+
+#logo-footer {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer h2 {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+#footer-redes {
+    margin: 20px 0;
+}
+
+.social-icon {
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: contain;
+    margin: 0 10px;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
