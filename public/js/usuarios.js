@@ -15,6 +15,7 @@ $(document).ready(function() {
             <td>${usuario.apell_usu}</td>
             <td>${usuario.correo_usu}</td>
             <td>${usuario.tipo_usu}</td>
+            <td>${usuario.estado_usu == 1 ? "Activo" : "inactivo" }</td>
           </tr>
         `;
         tbody.append(fila);

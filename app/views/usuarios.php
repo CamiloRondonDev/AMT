@@ -22,6 +22,7 @@
         <th>Apellido</th>
         <th>Correo</th>
         <th>tipo usuario</th>
+        <th>Estado</th>
         <!-- Agrega más columnas si tu tabla tiene más campos -->
       </tr>
     </thead>
