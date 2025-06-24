@@ -14,7 +14,6 @@
   <ul>
     <li><a class="links" href="#" data-url="/AMT/app/views/usuarios.php">USUARIOS</a></li>
     <li><a class="links" href="#" data-url="/AMT/app/views/adm_productos.php">PRODUCTOS</a></li>
-    <li><a class="links" href="#" data-url="/AMT/views/informes.php">PROVEEDORES</a></li>
     <li><a class="links" href="#" data-url="/AMT/views/informes.php">INFORMES</a></li>
   </ul>
 </nav>

@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  min-height: calc(100vh - 200px); /* deja espacio para header y footer */
+  min-height: calc(150vh - 200px); /* deja espacio para header y footer */
   box-sizing: border-box;
 }
 
@@ -27,7 +27,7 @@ form#registroForm {
   gap: 15px;
 }
 
-form#registroForm input {
+form#registroForm input , select {
   padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 8px;

@@ -2,6 +2,14 @@ document.getElementById("registroForm").addEventListener("submit", function (e) 
   e.preventDefault();
 
   const form = e.target;
+    const pass1 = form.querySelector('input[name="pass_usu"]').value;
+  const pass2 = form.querySelector('input[name="pass_usu_repeat"]').value;
+
+  if (pass1 !== pass2) {
+    document.getElementById("respuesta").innerText = "Las contraseñas no coinciden.";
+    return; // Detener envío
+  }
+
   const data = new FormData(form);
 
   $.ajax({
