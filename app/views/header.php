@@ -13,8 +13,9 @@
        <img src="\amt\public\img\header.png" alt="Logo Madre Tierra">
     </div>
     <nav>
-        <a href="home.php">Inicio</a>
-        <a href="#">Contacto</a>
+        <a href="https://www.madretierracolombia.org/">Inicio</a>
+        <a href="home.php">Comercio</a>
+        <a href="contacto.php">Contacto</a>
     </nav>
     <div class="cta-buttons">
         <!-- <a href="tel:+573026040049">+57 302 604 0049</a> -->
