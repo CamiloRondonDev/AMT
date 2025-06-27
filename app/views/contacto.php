@@ -18,7 +18,7 @@
         <div class="info-box">
             <i class="fas fa-envelope"></i>
             <h3>Email</h3>
-            <p class="detalle">info@ramedicas.com</p>
+            <p class="detalle">info@amt.com</p>
         </div>
     </section>
 </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="pregunta">
             <h3>¿Puedo solicitar cotización por correo?</h3>
-            <p>Claro, puedes escribirnos a info@ramedicas.com y te responderemos en el menor tiempo posible.</p>
+            <p>Claro, puedes escribirnos a info@amt.com y te responderemos en el menor tiempo posible.</p>
         </div>
     </div>
 </section>
