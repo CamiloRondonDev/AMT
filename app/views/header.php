@@ -15,7 +15,7 @@
        <img src="\amt\public\img\header.png" alt="Logo Madre Tierra">
     </div>
     <nav>
-        <a href="https://www.madretierracolombia.org/">Inicio</a>
+        <a href="https://www.madretierracolombia.org/" target="_blank">Inicio</a>
         <a href="home.php">Comercio</a>
         <a href="contacto.php">Contacto</a>
     </nav>
