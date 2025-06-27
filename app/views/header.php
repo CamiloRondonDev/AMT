@@ -8,6 +8,8 @@
     <title>Asociación Madre Tierra - Tienda</title>
 </head>
 <body>
+    <body style="display: flex; flex-direction: column; min-height: 100vh;">
+
 <header>
     <div >
        <img src="\amt\public\img\header.png" alt="Logo Madre Tierra">

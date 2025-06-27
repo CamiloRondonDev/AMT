@@ -4,6 +4,7 @@ html, body {
     padding: 0;
 }
 
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -11,6 +12,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
 
 main {
     flex: 1;
