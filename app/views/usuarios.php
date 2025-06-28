@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/amt/public/css/adm_usuarios.css">
+    <link rel="stylesheet" href="/amt/public/css/create_user.css">
     <title>Document</title>
 
 </head>
@@ -11,7 +12,7 @@
     <h2>Lista de Usuarios</h2>
     <div class="acciones">
       <button id="btnExportarExcel">📥 Exportar a Excel</button>
-      <button href="create_user.php"><a style="text-decoration: none; color: white;" href="create_user.php">➕ Agregar Nuevo Usuario</a></button>
+      <button id="btnAbrirModal" style="background-color: green; color: white;">➕ Agregar Nuevo Usuario</button>
     </div>
 <div class="tabla-scroll">
   <table id="tablaUsuarios">
@@ -32,8 +33,45 @@
     </tbody>
   </table>
 </div>
+
+<!-- Modal oculto -->
+<div id="modalRegistro" class="modal" style="display: none;">
+  <div class="modal-contenido">
+    <span class="cerrar" id="cerrarModal">&times;</span>
+    <h2>Registro Nuevo Proveedor</h2>
+
+    <form id="registroForm">
+      <div class="form-grid">
+        <input type="text" name="nom_usu" placeholder="Nombre" required>
+        <input type="text" name="apell_usus" placeholder="Apellido" required>
+
+        <select name="tipoDoc_usu" required>
+          <option value="">Tipo de documento</option>
+          <option value="CC">C.C.</option>
+          <option value="NIT">NIT</option>
+        </select>
+        <input type="text" name="id_usu" placeholder="Documento" required>
+
+        <input type="email" name="correo_usu" placeholder="Correo" required>
+        <input type="number" name="tel_usu" placeholder="Teléfono" required>
+
+        <input type="text" name="tipo_usu" placeholder="Tipo de usuario" required>
+        <input type="text" name="red_social" placeholder="Red Social" required>
+
+        <input type="password" name="pass_usu" placeholder="Contraseña" required>
+        <input type="password" name="pass_usu_repeat" placeholder="Repita Contraseña" required>
+      </div>
+
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <div id="respuesta"></div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../public/js/usuarios.js"></script>
+<script src="/amt/public/js/create_user.js"></script>
 </body>
 </html>

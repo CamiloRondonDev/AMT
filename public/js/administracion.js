@@ -41,7 +41,7 @@
     formChangePass.reset();
   });
 
-  // Cargar vistas dinámicamente en el panel
+// Cargar vistas dinámicamente en el panel
 document.querySelectorAll('#sidebar a[data-url]').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();

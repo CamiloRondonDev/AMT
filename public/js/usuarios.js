@@ -122,6 +122,23 @@ $('#tablaUsuarios').on('click', '.btnInactivar', function () {
 
 
 
+  // Abrir modal
+  document.getElementById("btnAbrirModal").addEventListener("click", () => {
+    document.getElementById("modalRegistro").style.display = "flex";
+  });
+
+  // Cerrar modal
+  document.getElementById("cerrarModal").addEventListener("click", () => {
+    document.getElementById("modalRegistro").style.display = "none";
+  });
+
+  // Cerrar al hacer clic fuera del contenido
+  window.addEventListener("click", (e) => {
+    const modal = document.getElementById("modalRegistro");
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 
 
 

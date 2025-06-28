@@ -64,3 +64,87 @@ form#registroForm button:hover {
   color: #d8000c;
   text-align: center;
 }
+
+
+/* Modal fondo */
+/* Modal fondo */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+}
+
+/* Contenido del modal */
+.modal-contenido {
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  max-width: 600px;
+  width: 90%;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón cerrar */
+.cerrar {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+}
+
+.cerrar:hover {
+  color: #000;
+}
+
+/* Formulario en dos columnas */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Botón enviar */
+#registroForm button {
+  margin-top: 20px;
+  padding: 12px;
+  background: linear-gradient(to left, #0d5c27, #3da60d);
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+/* Responsive: cambia a 1 columna en pantallas pequeñas */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
