@@ -17,8 +17,6 @@ $estado = 0;
 $accion = $_POST['accion'] ?? '';
 
 if ($accion === "activate_edit") {
-  file_put_contents('debug.txt', "ID recibido: $id_usu");
-
   $stmt = $conn->prepare("UPDATE usuarios SET estado_usu = 1 WHERE id_usu = ?");
   $stmt->bind_param("s", $id_usu);
 
@@ -35,6 +33,24 @@ if ($accion === "activate_edit") {
         ]);
   }
   
+}elseif($accion === "inactivate_edit"){
+
+    $stmt = $conn->prepare("UPDATE usuarios SET estado_usu = 0 WHERE id_usu = ?");
+  $stmt->bind_param("s", $id_usu);
+
+  if ($stmt->execute()) {
+    echo json_encode([
+      'success' => true,
+      'message' => 'Usuario Desactivado Correctamente.'
+      ]);
+
+  } else {
+      echo json_encode([
+        'success' => false,
+        'message' => 'Error al Desactivar el usuario: ' . $stmt->error
+        ]);
+  }
+
 }else {
 
 // Crear hash seguro

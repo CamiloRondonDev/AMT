@@ -89,13 +89,47 @@ $('#tablaUsuarios').on('click', '.btnActivar', function () {
 // Inactivar usuario
 $('#tablaUsuarios').on('click', '.btnInactivar', function () {
   const id = $(this).data('id');
-  if (!confirm("¿Deseas inactivar este usuario?")) return;
+  if (!confirm("¿Deseas activar este usuario?")) return;
 
-  $.post('http://localhost/amt/app/models/inactivarUsuario.php', { id_usu: id }, function () {
-    alert("Usuario inactivado con éxito");
-    location.reload(); // Recarga para reflejar el cambio
-  }).fail(() => alert("Error al inactivar el usuario"));
+  $.ajax({
+    url: 'http://localhost/amt/app/models/createUser.php',  // Cambia si tu ruta varía
+    type: 'POST',
+   data: {
+      accion: 'inactivate_edit',
+      id_usu: id
+    },
+    success: function (response) {
+      // Verifica si es string o JSON
+      if (typeof response === 'string') {
+        document.getElementById("respuesta").innerText = response;
+      } else {
+        if (response.success) {
+         alert('DESACTIVACIÓN  EXITOSA')
+         location.reload(); // Recarga para reflejar el cambio
+          // window.location.href = 'login.php'; // Descomenta si quieres redirigir
+        } else {
+           alert('DESACTIVACIÓN erronea')
+        }
+      }
+    },
+    error: function (xhr, status, error) {
+      document.getElementById("respuesta").innerText = "Error al desactivar usuario.";
+      console.error("Error AJAX:", error);
+    }
+  });
+
 });
+
+
+
+
+
+
+
+
+
+
+
 
 // Editar usuario
 $('#tablaUsuarios').on('click', '.btnEditar', function () {
