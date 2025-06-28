@@ -1,9 +1,11 @@
+/* =============================
+   1. Reset y estructura base
+============================= */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
-
 
 body {
     font-family: Arial, sans-serif;
@@ -13,7 +15,6 @@ body {
     min-height: 100vh;
 }
 
-
 main {
     flex: 1;
     display: flex;
@@ -22,6 +23,9 @@ main {
 }
 
 
+/* =============================
+   2. Header (Encabezado)
+============================= */
 header {
     background-color: #222;
     color: white;
@@ -57,7 +61,7 @@ nav a:hover {
 }
 
 .cta-buttons a {
-     background: linear-gradient(to left, #0d5c27, #3da60d);
+    background: linear-gradient(to left, #0d5c27, #3da60d);
     color: white;
     padding: 8px 15px;
     text-decoration: none;
@@ -68,11 +72,15 @@ nav a:hover {
 
 .cta-buttons a:hover {
     background: linear-gradient(to left, #0d5c27, #3da60d);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* sombra más notoria */
-    transform: translateY(-2px); /* levanta el botón visualmente */
-    transition: all 0.2s ease-in-out; /* suaviza el efecto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
 }
 
+
+/* =============================
+   3. Sección de productos
+============================= */
 .products-section {
     padding: 20px;
 }
@@ -91,20 +99,20 @@ nav a:hover {
 }
 
 .product-card {
-    width: 100%; /* Ajustar al tamaño del contenedor */
-    max-width: 300px; /* Puedes poner el tamaño máximo que desees */
+    width: 100%;
+    max-width: 300px;
     margin: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    overflow: hidden; /* Para evitar que la imagen se salga del borde */
+    overflow: hidden;
     background-color: #fff;
 }
 
 .product-image {
-    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
-    height: 200px; /* Puedes ajustar el tamaño según lo necesites */
-    object-fit: cover; /* Hace que la imagen se recorte si es necesario para llenar el espacio */
-    object-position: center; /* Centra la imagen si se recorta */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .product-info {
@@ -135,22 +143,15 @@ nav a:hover {
 
 .product-info .button:hover {
     background: linear-gradient(to left, #0d5c27, #3da60d);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* sombra más notoria */
-    transform: translateY(-2px); /* levanta el botón visualmente */
-    transition: all 0.2s ease-in-out; /* suaviza el efecto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
 }
 
 
-
-/* footer {
-    background-color: #222;
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
-    margin-top: 20px;
-} */
-
-/* header - Filtros */
+/* =============================
+   4. Barra de búsqueda
+============================= */
 .search-container {
     display: flex;
     justify-content: center;
@@ -163,7 +164,6 @@ nav a:hover {
     max-width: 1200px;
     margin: 0 auto;
     margin-bottom: 20px;
-   
 }
 
 .search-container input {
@@ -194,16 +194,18 @@ nav a:hover {
 
 .search-container button:hover {
     background: linear-gradient(to left, #0d5c27, #3da60d);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* sombra más notoria */
-    transform: translateY(-2px); /* levanta el botón visualmente */
-    transition: all 0.2s ease-in-out; /* suaviza el efecto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
 }
 
-/* Sidebar - Filtros */
-/* Sidebar - Filtros */
+
+/* =============================
+   5. Sidebar / Filtros
+============================= */
 .sidebar {
     width: 100%;
-    padding: 10px; /* Reducimos el padding para que la barra sea menos alta */
+    padding: 10px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-right: 20px;
@@ -217,68 +219,59 @@ nav a:hover {
     margin-bottom: 2%;
 }
 
-/* Título de los filtros */
 .sidebar h3 {
     text-align: center;
     width: 100%;
-    margin-bottom: 15px; /* Reducimos el margen para que ocupe menos espacio */
-    font-size: 22px; /* Reducimos el tamaño de fuente */
+    margin-bottom: 15px;
+    font-size: 22px;
     color: #4CAF50;
 }
 
-/* Estilo para las categorías de filtros */
 .filter-category {
     width: 30%;
-    margin-bottom: 10px; /* Reducimos el margen inferior para disminuir la altura total */
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
 }
 
-/* Estilo para los títulos de cada filtro */
 .filter-category h4 {
-    font-size: 14px; /* Reducimos el tamaño de la fuente del título */
-    margin-bottom: 5px; /* Reducimos el margen inferior */
+    font-size: 14px;
+    margin-bottom: 5px;
     color: #333;
 }
 
-/* Estilo para los select y range */
 .filter-category select,
 .filter-category input[type="range"] {
     width: 100%;
-    padding: 8px; /* Reducimos el padding para que los controles sean más compactos */
-    font-size: 12px; /* Reducimos el tamaño de la fuente */
+    padding: 8px;
+    font-size: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
     transition: border-color 0.3s ease;
 }
 
-/* Cambio de color en el foco de los inputs */
 .filter-category select:focus,
 .filter-category input[type="range"]:focus {
     border-color: #4CAF50;
 }
 
-/* Estilo para el rango de precios */
 .filter-category input[type="range"] {
-    margin-top: 5px; /* Reducimos el margen superior */
+    margin-top: 5px;
 }
 
-/* Estilo para el texto del rango de precios */
 .filter-category p {
-    font-size: 12px; /* Reducimos el tamaño de la fuente */
+    font-size: 12px;
     margin-top: 5px;
     text-align: right;
     color: #555;
 }
 
-/* Asegurarse de que todos los filtros estén alineados horizontalmente */
-.filter-category {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-    margin-bottom: 15px;
-}
 
-/* Evitar que los elementos se desborden */
+/* =============================
+   6. Responsive Design
+============================= */
 @media (max-width: 768px) {
     .sidebar {
         flex-direction: column;
@@ -287,6 +280,99 @@ nav a:hover {
     .filter-category {
         width: 100%;
         margin-right: 0;
+    }
+}
+
+
+
+/* ======== Header responsivo ======== */
+header {
+    background-color: #222;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #00b300;
+}
+
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-buttons a {
+    background: linear-gradient(to left, #0d5c27, #3da60d);
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    .menu a {
+        padding: 10px 0;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        display: flex;
+    }
+
+    .cta-buttons {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 10px;
     }
 }
 

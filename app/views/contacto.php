@@ -45,7 +45,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const infoContacto = document.querySelector('.info-contacto');
-    const offsetToCollapse = 200; // Puedes ajustar esto
+    const offsetToCollapse = 350; 
 
     window.addEventListener('scroll', function () {
         const scrollY = window.scrollY;

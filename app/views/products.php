@@ -8,10 +8,13 @@
 </head>
 
 <div class="container">
+
     <div class="product">
-        <div>
+
+        <div class="product-image">
             <img src="" alt="Imagen del Producto" id="productImage">
         </div>
+
         <div class="product-info">
             <h1 id="productName">Cargando...</h1>
             <p><strong>Fábrica:</strong> <span id="productFactory">Cargando...</span></p>
@@ -34,8 +37,35 @@
     </div>
 </div>
 
+<!-- Modal de imagen -->
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
 <?php require_once 'footer.php'; ?>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../public/js/products.js"></script>
+
+<script>
+  // Modal de imagen
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  const productImg = document.getElementById("productImage");
+
+  if (productImg) {
+    productImg.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    };
+  }
+
+  const closeBtn = document.querySelector(".close");
+  if (closeBtn) {
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
+  }
+</script>
