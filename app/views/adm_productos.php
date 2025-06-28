@@ -17,7 +17,7 @@
 
 </div>
 
-  <table id="tablaProductos">
+  <table  id="tablaProductos">
     <thead>
       <tr>
         <th>Nombre</th>
@@ -27,6 +27,8 @@
         <th>Precio</th>
         <th>Vendedor</th>
         <th>Contacto</th>
+        <th>Estado</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>

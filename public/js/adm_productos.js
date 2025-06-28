@@ -18,6 +18,16 @@ $(document).ready(function() {
                         <td>$${producto.precio_prod}</td>
                         <td>${producto.nom_usu}</td>
                         <td style="width: 140px;">${producto.tel_usu}</td>
+                        <td>${producto.estado_prod == 1 ? 'ACTIVO': 'INACTIVO' }</td>
+                        <td>
+                            ${producto.estado_prod == 1 
+                                ? `<span style="color: green;">Activo</span> 
+                                <button class="btnInactivar" data-id="${producto.id_prod}" style="margin-left: 5px; font-size: 0.8rem;">Inactivar</button>`
+                                : `<span style="color: red;">Inactivo</span> 
+                                <button class="btnActivar" data-id="${producto.id_prod}" style="margin-left: 5px; font-size: 0.8rem;">Activar</button>`
+                            }
+                            <button class="btnEditar" data-id="${producto.id_prod}" style="margin-left: 5px; font-size: 0.8rem;">Editar</button>
+                        </td>
                     </tr>
                 `;
                 tbody.append(fila);
@@ -83,6 +93,73 @@ $(document).ready(function() {
     const wb = XLSX.utils.table_to_book(tabla, { sheet: "Productos" });
     XLSX.writeFile(wb, 'productos.xlsx');
   });
+
+  // Activar producto
+$('#tablaProductos').on('click', '.btnActivar', function () {
+  const id = $(this).data('id');
+  if (!confirm("¿Deseas activar este producto?")) return;
+
+  $.ajax({
+    url: 'http://localhost/amt/app/models/obtenerProductos.php',  // Cambia si tu ruta varía
+    type: 'POST',
+   data: {
+      accion: 'activate_edit',
+      id_usu: id
+    },
+    success: function (response) {
+      // Verifica si es string o JSON
+      if (typeof response === 'string') {
+        document.getElementById("respuesta").innerText = response;
+      } else {
+        if (response.success) {
+         alert('ACTIVACION EXITOSA')
+         location.reload(); // Recarga para reflejar el cambio
+          // window.location.href = 'login.php'; // Descomenta si quieres redirigir
+        } else {
+           alert('ACTIVACION ERRONEA' , response.success)
+        }
+      }
+    },
+    error: function (xhr, status, error) {
+    //   document.getElementById("respuesta").innerText = "Error al registrar usuario.";
+      console.error("Error AJAX:", error);
+    }
+  });
+
+});
+  // inactivar producto
+$('#tablaProductos').on('click', '.btnInactivar', function () {
+  const id = $(this).data('id');
+  if (!confirm("¿Deseas desactivar este producto?")) return;
+
+  $.ajax({
+    url: 'http://localhost/amt/app/models/obtenerProductos.php',  // Cambia si tu ruta varía
+    type: 'POST',
+   data: {
+      accion: 'inactivate_edit',
+      id_usu: id
+    },
+    success: function (response) {
+      // Verifica si es string o JSON
+      if (typeof response === 'string') {
+        document.getElementById("respuesta").innerText = response;
+      } else {
+        if (response.success) {
+         alert('ACTIVACION EXITOSA')
+         location.reload(); // Recarga para reflejar el cambio
+          // window.location.href = 'login.php'; // Descomenta si quieres redirigir
+        } else {
+           alert('ACTIVACION ERRONEA' , response.success)
+        }
+      }
+    },
+    error: function (xhr, status, error) {
+    //   document.getElementById("respuesta").innerText = "Error al registrar usuario.";
+      console.error("Error AJAX:", error);
+    }
+  });
+
+});
 
 
   //obtener usuarios proveedores para el select al crear un producto
