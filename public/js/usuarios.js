@@ -68,7 +68,8 @@ $('#tablaUsuarios').on('click', '.btnActivar', function () {
       } else {
         if (response.success) {
          alert('ACTIVACION EXITOSA')
-         location.reload(); // Recarga para reflejar el cambio
+         recargarVistaUsuarios()
+        // location.reload(); // Recarga para reflejar el cambio
           // window.location.href = 'login.php'; // Descomenta si quieres redirigir
         } else {
            alert('ACTIVACION erronea')
@@ -105,7 +106,9 @@ $('#tablaUsuarios').on('click', '.btnInactivar', function () {
       } else {
         if (response.success) {
          alert('DESACTIVACIÓN  EXITOSA')
-         location.reload(); // Recarga para reflejar el cambio
+         recargarVistaUsuarios();
+
+        //  location.reload(); // Recarga para reflejar el cambio
           // window.location.href = 'login.php'; // Descomenta si quieres redirigir
         } else {
            alert('DESACTIVACIÓN erronea')
@@ -119,7 +122,6 @@ $('#tablaUsuarios').on('click', '.btnInactivar', function () {
   });
 
 });
-
 
 
   // Abrir modal
@@ -205,10 +207,12 @@ $('#registroForm').on('submit', function (e) {
         $('#btnRegistroSubmit').text('Registrarse');
         // Cerrar modal
         document.getElementById("modalRegistro").style.display = "none";
-        location.reload();
+        //location.reload();
+        recargarVistaUsuarios()
       } else {
         alert(response.message);
-        location.reload();
+        // location.reload();
+        recargarVistaUsuarios()
       }
     },
     error: function (xhr, status, error) {
@@ -217,6 +221,11 @@ $('#registroForm').on('submit', function (e) {
     }
   });
 });
+
+//recarga solo usuarios
+function recargarVistaUsuarios() {
+  $('#panel-content').load('/AMT/app/views/usuarios.php');
+}
 
 
 });

@@ -41,6 +41,16 @@
     formChangePass.reset();
   });
 
+    //cerrar sesion
+    document.getElementById("btnClose").addEventListener("click", function () {
+  const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
+  
+  if (confirmar) {
+    // Redirige a la página de login o logout
+    window.location.href = "/AMT/app/views/login.php";
+  }
+  });
+
 // Cargar vistas dinámicamente en el panel
 document.querySelectorAll('#sidebar a[data-url]').forEach(link => {
   link.addEventListener('click', function (e) {
