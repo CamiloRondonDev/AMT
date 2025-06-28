@@ -142,16 +142,83 @@ $('#tablaUsuarios').on('click', '.btnInactivar', function () {
 
 
 
-
-
-
-
-
-
 // Editar usuario
 $('#tablaUsuarios').on('click', '.btnEditar', function () {
   const id = $(this).data('id');
-  window.location.href = `edit_user.php?id=${id}`;
+   $.ajax({
+    url: 'http://localhost/amt/app/models/createUser.php',
+    type: 'POST',
+    data: { accion: 'get_by_id', id_usu: id },
+    dataType: 'json',
+    success: function (usuario) {
+      // Llenar los campos del formulario con los datos
+      $('#registroForm [name="nom_usu"]').val(usuario.nom_usu);
+      $('#registroForm [name="apell_usus"]').val(usuario.apell_usu);
+      $('#registroForm [name="tipoDoc_usu"]').val(usuario.tipoDoc_usu);
+      $('#registroForm [name="id_usu"]').val(usuario.id_usu);
+      $('#registroForm [name="correo_usu"]').val(usuario.correo_usu);
+      $('#registroForm [name="tel_usu"]').val(usuario.tel_usu);
+      $('#registroForm [name="tipo_usu"]').val(usuario.tipo_usu);
+      $('#registroForm [name="red_social"]').val(usuario.red_social);
+
+      // Ocultar campos de contraseña si no quieres editarlos
+      $('#registroForm [name="pass_usu"]').val('');
+      $('#registroForm [name="pass_usu_repeat"]').val('');
+
+      // Actualizar campos ocultos para modo edición
+      $('#accion').val('update_user');
+      $('#id_original').val(usuario.id_usu);
+
+      // Cambiar título y texto del botón
+      $('#modalTitulo').text('Editar Usuario');
+      $('#btnRegistroSubmit').text('Guardar Cambios');
+
+      // Mostrar el modal
+      $('#modalRegistro').fadeIn();
+    },
+    error: function (xhr, status, error) {
+      console.error('Error al obtener el usuario:', error);
+      alert('Error al cargar los datos del usuario.');
+    }
+  });
 });
 
+// Botón de guardar (crear o actualizar usuario)
+$('#registroForm').on('submit', function (e) {
+  e.preventDefault();
+  alert('camilo_llamdo_metodo')
+  const formData = $(this).serialize(); // ✅ Definir la variable
+  $.ajax({
+    url: 'http://localhost/amt/app/models/createUser.php',
+    type: 'POST',
+    data: formData,
+    dataType: 'json',
+    success: function (response) {
+      if (response.success) {
+        alert(response.message);
+        // Cerrar y resetear el modal
+        $('#modalRegistro').fadeOut();
+        $('#registroForm')[0].reset();
+        $('#accion').val('crear'); // Restaurar a modo crear
+        $('#id_original').val('');
+        $('#modalTitulo').text('Registro Nuevo Proveedor');
+        $('#btnRegistroSubmit').text('Registrarse');
+        // Cerrar modal
+        document.getElementById("modalRegistro").style.display = "none";
+        location.reload();
+      } else {
+        alert(response.message);
+        location.reload();
+      }
+    },
+    error: function (xhr, status, error) {
+      console.error(error);
+      alert('Error al enviar los datos');
+    }
+  });
 });
+
+
+});
+
+

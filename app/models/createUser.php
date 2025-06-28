@@ -51,7 +51,48 @@ if ($accion === "activate_edit") {
         ]);
   }
 
-}else {
+}elseif($accion === "get_by_id"){
+
+  $id_usu = $_POST['id_usu'] ?? '';
+
+  $stmt = $conn->prepare("SELECT id_usu, nom_usu, apell_usu, tipoDoc_usu, correo_usu, tel_usu, tipo_usu, red_social FROM usuarios WHERE id_usu = ?");
+  $stmt->bind_param("s", $id_usu);
+
+  if ($stmt->execute()) {
+    $resultado = $stmt->get_result();
+    if ($resultado->num_rows > 0) {
+      $usuario = $resultado->fetch_assoc();
+      echo json_encode($usuario);
+    } else {
+      echo json_encode([
+        'success' => false,
+        'message' => 'Usuario no encontrado.'
+      ]);
+    }
+  } else {
+    echo json_encode([
+      'success' => false,
+      'message' => 'Error al consultar el usuario: ' . $stmt->error
+    ]);
+  }
+}elseif ($accion === "update_user") {
+  // Prepara la consulta de actualización (sin contraseña)
+  $stmt = $conn->prepare("UPDATE usuarios SET nom_usu = ?, apell_usu = ?, tipoDoc_usu = ?, correo_usu = ?, tel_usu = ?, tipo_usu = ?, red_social = ? WHERE id_usu = ?");
+  $stmt->bind_param("ssssssss", $nombre, $apellido, $tipoDoc, $correo, $telefono, $tipo, $red_social, $id_usu);
+
+  if ($stmt->execute()) {
+    echo json_encode([
+      'success' => true,
+      'message' => 'Usuario actualizado correctamente.'
+    ]);
+  } else {
+    echo json_encode([
+      'success' => false,
+      'message' => 'Error al actualizar el usuario: ' . $stmt->error
+    ]);
+  }
+}
+else {
 
 // Crear hash seguro
   $password_hash = password_hash($password_plain, PASSWORD_DEFAULT);

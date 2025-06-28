@@ -11,7 +11,7 @@
   <h2>Todos los productos</h2>
 
   <div class="acciones">
-    <button id="btnExportarProductos">📥 Exportar a Exce</button>
+    <button id="btnExportarProductos">📥 Exportar a Excel</button>
     <button id="btnAgregarProducto">➕ Agregar Producto</button>
   </div>
 
