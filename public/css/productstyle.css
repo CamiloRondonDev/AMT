@@ -35,7 +35,7 @@ header img {
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1400px;  /* antes estaba en 1200 o 1400 */
     margin: 40px auto;
     padding: 40px;
     background: rgba(255, 255, 255, 0.95);
@@ -43,27 +43,34 @@ header img {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     gap: 40px;
+    justify-content: center;
 }
+
 
 .product {
     display: flex;
-    flex-wrap: wrap;
     gap: 40px;
     align-items: flex-start;
     width: 100%;
+    justify-content: center;
 }
 
+/* Contenedor de imagen con tamaño fijo */
 .product-image {
-    flex: 1;
-    max-width: 600px;
+    width: 600px;
+    height: 600px;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
 .product-info {
-    flex: 1;
+    width: 600px;
+    height: 600px;
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -71,9 +78,10 @@ header img {
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     text-align: left;
 }
+
 
 .product-info h1 {
     font-size: 2.3rem;
@@ -81,7 +89,13 @@ header img {
     margin-bottom: 20px;
 }
 
-.product-info p,
+.product-info p{
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+
 .contact-info p {
     font-size: 1.1rem;
     color: #444;
@@ -100,6 +114,7 @@ header img {
     align-self: start;
     padding: 12px 24px;
     font-size: 1rem;
+    margin-top: auto; /* <- esto lo empuja hacia el fondo */
 }
 
 .buy-button:hover {
@@ -107,24 +122,27 @@ header img {
     transform: scale(1.05);
 }
 
-.product img {
-  width: 700px;       /* ancho fijo */
-  height: 700px;      /* alto fijo */
-  object-fit: cover;  /* recorta la imagen para llenar el espacio sin deformar */
-  display: block;     /* elimina espacios extra */
-  border-radius: 8px; /* opcional: bordes redondeados */
+.product-image {
+    width: 500px;
+    aspect-ratio: 1 / 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
 .product-image img {
     width: 100%;
-    max-width: 500px;
-    height: 500px;
-    object-fit: contain; /* Ajusta sin recortar */
+    height: 100%;
+    object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.2s ease;
 }
+
 
 .product-image img:hover {
     transform: scale(1.03);
@@ -161,3 +179,13 @@ header img {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .product {
+    flex-direction: column;
+  }
+
+  .product-image img {
+    height: auto;
+    max-height: 400px;
+  }
+}
