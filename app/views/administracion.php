@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/amt/public/css/administracion.css">
   <link rel="icon" href="/amt/public/img/IDENTIFICADOR SIN TEXTO-08.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+
   <title>Panel de Administración</title>
 </head>
 <body>
@@ -29,7 +32,8 @@
     Panel de Administración
   </div>
   <div class="header-right">
-    <div id="btnSettings" title="Cambiar contraseña">&#9881;</div>
+    <div class="fas fa-gear" id="btnSettings" title="Cambiar contraseña"></div>
+    <div style="margin-left: 15px;" class="fas fa-sign-out-alt" id="btnClose" title="Cerrar Sesión"></div>
   </div>
 </header>
 

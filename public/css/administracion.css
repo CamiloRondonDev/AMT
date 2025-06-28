@@ -82,7 +82,7 @@ header {
   flex: 1;
 }
 
-#btnToggleSidebar, #btnSettings {
+#btnToggleSidebar, #btnSettings , #btnClose {
   cursor: pointer;
   font-size: 20px;
 }
@@ -96,6 +96,11 @@ header {
 
   /* Icono tuerca */
   #btnSettings {
+    font-size: 22px;
+    cursor: pointer;
+  }
+  /* Icono sigin out */
+  #btnClose {
     font-size: 22px;
     cursor: pointer;
   }

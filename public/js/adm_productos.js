@@ -113,7 +113,8 @@ $('#tablaProductos').on('click', '.btnActivar', function () {
       } else {
         if (response.success) {
          alert('ACTIVACION EXITOSA')
-         location.reload(); // Recarga para reflejar el cambio
+         recargarVistaAdmProductos()
+        //  location.reload(); // Recarga para reflejar el cambio
           // window.location.href = 'login.php'; // Descomenta si quieres redirigir
         } else {
            alert('ACTIVACION ERRONEA' , response.success)
@@ -146,7 +147,8 @@ $('#tablaProductos').on('click', '.btnInactivar', function () {
       } else {
         if (response.success) {
          alert('ACTIVACION EXITOSA')
-         location.reload(); // Recarga para reflejar el cambio
+         recargarVistaAdmProductos()
+        //  location.reload(); // Recarga para reflejar el cambio
           // window.location.href = 'login.php'; // Descomenta si quieres redirigir
         } else {
            alert('ACTIVACION ERRONEA' , response.success)
@@ -180,6 +182,11 @@ $('#tablaProductos').on('click', '.btnInactivar', function () {
       console.error("Error al cargar usuarios_proveeodor:", error);
     }
   });
+}
+
+//recarga solo recargarVistaProductos
+function recargarVistaAdmProductos() {
+  $('#panel-content').load('/AMT/app/views/adm_productos.php');
 }
 
 });
