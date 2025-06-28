@@ -49,7 +49,9 @@
       <input type="number" name="precio" placeholder="Precio" required>
       <textarea type="text" name="descripcion" placeholder="Descripción" required></textarea>
       <input type="text" name="categoria" placeholder="Categoria" required>
-      <input type="text" name="proveedor" placeholder="Proveedor" required>
+      <select name="proveedor" id="selectProveedores" required>
+        <option value="">Seleccione un proveedor</option>
+      </select>
       <input type="text" name="img" placeholder="imagen" required>
       <textarea type="text" name="observacion" placeholder="Observación" required></textarea>
 

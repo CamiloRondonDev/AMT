@@ -30,7 +30,9 @@ $(document).ready(function() {
 
     // ✅ Abrir modal solo cuando se hace clic
     $('#btnAgregarProducto').click(function () {
+        cargarProveedores()
         $('#modalAgregarProducto').fadeIn();
+        
     });
 
     // Cerrar modal
@@ -81,4 +83,26 @@ $(document).ready(function() {
     const wb = XLSX.utils.table_to_book(tabla, { sheet: "Productos" });
     XLSX.writeFile(wb, 'productos.xlsx');
   });
+
+
+  //obtener usuarios proveedores para el select al crear un producto
+  function cargarProveedores() {
+  $.ajax({
+    url: 'http://localhost/amt/app/models/usuarios.php',  // Cambia si es necesario
+    type: 'GET',
+    dataType: 'json',
+    success: function (usuarios_proveeodor) {
+      const select = $('#selectProveedores');
+      select.empty().append('<option value="">Seleccione un proveedor</option>');
+
+      usuarios_proveeodor.forEach(p => {
+        select.append(`<option value="${p.id_usu}">${p.nom_usu}</option>`);
+      });
+    },
+    error: function (xhr, status, error) {
+      console.error("Error al cargar usuarios_proveeodor:", error);
+    }
+  });
+}
+
 });
