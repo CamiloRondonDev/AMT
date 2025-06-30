@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT id_usu, pass_usu FROM usuarios WHERE correo_usu = ?");
+    $stmt = $conn->prepare("SELECT id_usu, nom_usu, tipo_usu, pass_usu FROM usuarios WHERE correo_usu = ?");
     if (!$stmt) {
         echo json_encode(["success" => false, "message" => "Error en la preparación de la consulta."]);
         exit;
@@ -26,9 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($resultado->num_rows === 1) {
         $usuario = $resultado->fetch_assoc();
 
-        // Verificar contraseña usando hash
+        // Verificar contraseña
         if (password_verify($contrasena, $usuario['pass_usu'])) {
+            // ✅ Guardar múltiples datos en la sesión
             $_SESSION['id_usu'] = $usuario['id_usu'];
+            $_SESSION['nombre'] = $usuario['nom_usu'];
+            $_SESSION['rol'] = $usuario['tipo_usu'];
 
             echo json_encode(["success" => true, "message" => "Inicio de sesión exitoso."]);
         } else {
