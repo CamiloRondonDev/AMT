@@ -184,6 +184,17 @@ $('#tablaProductos').on('click', '.btnInactivar', function () {
   });
 }
 
+//validaciones carga de imagenes
+document.getElementById("formNuevoProducto").addEventListener("submit", function (e) {
+  const archivos = this.querySelector('input[type="file"]').files;
+  if (archivos.length < 3) {
+    alert("Debes seleccionar al menos 3 archivos (imágenes o videos).");
+    e.preventDefault();
+    return false;
+  }
+});
+
+
 //recarga solo recargarVistaProductos
 function recargarVistaAdmProductos() {
   $('#panel-content').load('/AMT/app/views/adm_productos.php');

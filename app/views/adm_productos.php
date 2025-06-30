@@ -42,7 +42,7 @@
   <div class="modal-contenido">
     <span class="cerrar">&times;</span>
     <h3>Agregar nuevo producto</h3>
-    <form id="formNuevoProducto">
+<form id="formNuevoProducto" enctype="multipart/form-data">
       <input type="text" name="nombre_prod" placeholder="Nombre del producto" required>
       <input type="text" name="fabrica" placeholder="Fábrica" required>
       <input type="text" name="cobertura" placeholder="Covertura de venta" required>
@@ -54,7 +54,9 @@
       <select name="proveedor" id="selectProveedores" required>
         <option value="">Seleccione un proveedor</option>
       </select>
-      <input type="text" name="img" placeholder="imagen" required>
+      <input type="file" name="media[]" accept="image/*,video/*" multiple required>
+        <small>Selecciona mínimo 3 imágenes o videos.</small>
+
       <textarea type="text" name="observacion" placeholder="Observación" required></textarea>
 
       <button type="submit">Guardar</button>
