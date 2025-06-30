@@ -1,9 +1,18 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 require __DIR__ . './../../config/bd.php';
 
 $accion = $_POST['accion'] ?? $_GET['accion'] ?? '';
 $id_usu = $_POST['id_usu'] ?? $_GET['id_usu'] ?? null;
+
+
+// Validar que haya sesión activa si no es una acción pública
+if (!isset($_SESSION['id_usu'])) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'message' => 'No autenticado']);
+    exit;
+}
 
 
 if ($accion === "activate_edit") {
@@ -40,20 +49,32 @@ if ($accion === "activate_edit") {
     }
 }elseif($accion === "allProducts"){
 
-    $sql = "SELECT * FROM
-        productos p 
-        inner join usuarios u on p.doc_proov = u.id_usu
-        ";
-        $result = $conn->query($sql);
+    $rol = $_SESSION['rol'] ?? '';
+    $idUsuario = $_SESSION['id_usu'] ?? 0;
 
-        $productos = [];
+    if ($rol === 'admin') {
+        // Admin: trae todos los productos
+        $sql = "SELECT * FROM productos p 
+                INNER JOIN usuarios u ON p.doc_proov = u.id_usu";
+        $stmt = $conn->prepare($sql);
+    } else {
+        // Usuario normal: solo los suyos
+        $sql = "SELECT * FROM productos p 
+                INNER JOIN usuarios u ON p.doc_proov = u.id_usu 
+                WHERE u.id_usu = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $idUsuario);
+    }
 
-        while ($row = $result->fetch_assoc()) {
-            $productos[] = $row;
-        }
-        echo json_encode($productos);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    $productos = [];
+    while ($row = $result->fetch_assoc()) {
+        $productos[] = $row;
+    }
 
+    echo json_encode($productos);
 }else {
 
     $sql = "SELECT * FROM

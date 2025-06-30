@@ -3,10 +3,10 @@ $(document).ready(function () {
         e.preventDefault(); // Evita recargar la página
 
         const datos = {
-            //username: $('#username').val(),
-            //password: $('#password').val()
-            username: 'camiloanla@gmail.com',
-            password: 'camilo123*'
+          username: $('#username').val(),
+          password: $('#password').val()
+            // username: 'camiloanla@gmail.com',
+            // password: 'camilo123*'
         };
 
         $.ajax({
