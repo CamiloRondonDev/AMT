@@ -35,7 +35,8 @@ header img {
 }
 
 .container {
-    max-width: 1400px;  /* antes estaba en 1200 o 1400 */
+    max-width: 1450px; 
+    width: 95%;
     margin: 40px auto;
     padding: 40px;
     background: rgba(255, 255, 255, 0.95);
@@ -44,18 +45,19 @@ header img {
     display: flex;
     gap: 40px;
     justify-content: center;
+    flex-wrap: wrap;
 }
-
 
 .product {
     display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    width: 100%;
-    justify-content: center;
+  gap: 20px;
+  align-items: stretch; /* 👈 fuerza misma altura entre .product-image y .product-info */
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* Contenedor de imagen con tamaño fijo */
+/*
 .product-image {
     width: 600px;
     height: 600px;
@@ -66,20 +68,20 @@ header img {
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     padding: 10px;
-}
+}*/
 
 .product-info {
-    width: 600px;
-    height: 600px;
-    background-color: #fff;
+     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 
@@ -89,18 +91,23 @@ header img {
     margin-bottom: 20px;
 }
 
-.product-info p{
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 10px;
+.product-image,
+.product-info {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    min-height: 650px;
 }
 
-
+.product-info p,
 .contact-info p {
     font-size: 1.1rem;
     color: #444;
     margin: 8px 0;
     line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .product-info .price {
@@ -122,9 +129,8 @@ header img {
     transform: scale(1.05);
 }
 
+
 .product-image {
-    width: 500px;
-    aspect-ratio: 1 / 1;
     background-color: white;
     display: flex;
     justify-content: center;
@@ -132,28 +138,36 @@ header img {
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     padding: 10px;
-}
+} 
 
 .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
 }
-
 
 .product-image img:hover {
     transform: scale(1.03);
 }
 
+.modal-img {
+  width: auto;
+  height: auto;
+  max-width: 95vw;
+  max-height: 60vw;
+  object-fit: contain;
+  image-rendering: auto;
+  cursor: zoom-out;
+  pointer-events: auto;
+  z-index: 999;
+  display: block;
+   pointer-events: auto; 
+}
 
 .modal {
   display: none;
   position: fixed;
   z-index: 999;
-  padding-top: 80px;
   left: 0;
   top: 0;
   width: 100%;
@@ -161,22 +175,34 @@ header img {
   background-color: rgba(0,0,0,0.8);
 }
 
+.modal-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .modal-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 10px;
+  width: auto;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: zoom-out;
+  pointer-events: auto; /* Esto permite clics en la imagen */
 }
 
 .close {
   position: absolute;
-  top: 40px;
-  right: 80px;
+  top: 30px;
+  right: 50px;
   color: white;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
@@ -188,4 +214,75 @@ header img {
     height: auto;
     max-height: 400px;
   }
+}
+
+.product-image-gallery {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  max-width: 600px;
+}
+
+.thumbnail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+  border-color: #00a000;
+}
+
+.main-image-container {
+  position: relative;
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.main-image-container img {
+  max-width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
 }

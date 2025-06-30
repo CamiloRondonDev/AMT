@@ -10,10 +10,10 @@
 <div class="container">
 
     <div class="product">
-
+           
         <div class="product-image">
             <img src="" alt="Imagen del Producto" id="productImage">
-        </div>
+        </div> 
 
         <div class="product-info">
             <h1 id="productName">Cargando...</h1>
@@ -40,7 +40,9 @@
 <!-- Modal de imagen -->
 <div id="imageModal" class="modal">
     <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
+     <div class="modal-inner">
+    <img class="modal-img" id="modalImage" alt="Imagen ampliada">
+    </div>
 </div>
 
 <?php require_once 'footer.php'; ?>
@@ -54,6 +56,7 @@
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");
   const productImg = document.getElementById("productImage");
+  /*const closeBtn = document.querySelector(".close");*/
 
   if (productImg) {
     productImg.onclick = function () {
@@ -63,6 +66,7 @@
   }
 
   const closeBtn = document.querySelector(".close");
+
   if (closeBtn) {
     closeBtn.onclick = function () {
       modal.style.display = "none";
