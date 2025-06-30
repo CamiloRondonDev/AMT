@@ -23,7 +23,13 @@ $(document).ready(function() {
                 $('#productCategory').text(response.cat_prod);
                 $('#productSocial').attr('href', response.red_social).attr('target', '_blank').text('Visitar perfil');
                 $('#productObservations').text(response.obser_prod);
-                $('#productPrice').text('$' + response.precio_prod);
+                // 🧾 Formato de precio en pesos colombianos
+                const precio = Number(response.precio_prod);
+                const formatoCOP = new Intl.NumberFormat('es-CO', {
+                    style: 'currency',
+                    currency: 'COP'
+                });
+                $('#productPrice').text(formatoCOP.format(precio));
                 $('#sellerName').text(response.nom_usu);
                 $('#sellerContact').text(response.tel_usu);
                 $('#sellerEmail').text(response.correo_usu);

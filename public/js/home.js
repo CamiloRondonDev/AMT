@@ -9,14 +9,20 @@ $(document).ready(function () {
             container.empty(); // Limpiar antes de agregar productos
 
             if (data.length > 0) {
+             // Configurar formateador de moneda COP
+                const formatoCOP = new Intl.NumberFormat('es-CO', {
+                    style: 'currency',
+                    currency: 'COP'
+                });
                 data.forEach(producto => {
+                    let precioFormateado = formatoCOP.format(Number(producto.precio_prod));
                     let card = `
                   <div class="product-card">
                      <img class="product-image" src="${producto.img_prod}" alt="${producto.fabrica_prod}">
                      <div class="product-info">
                         <h3>${producto.nom_prod}</h3>
                          <p>${producto.desc_prod}</p>
-                         <p class="price">$${producto.precio_prod}</p>
+                         <p class="price">${precioFormateado}</p>
                          <a href="products.php?id=${producto.id_prod}" class="button">Ver Producto</a>
                       </div>
                     </div>
