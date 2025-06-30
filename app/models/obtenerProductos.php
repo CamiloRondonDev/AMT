@@ -38,9 +38,30 @@ if ($accion === "activate_edit") {
             'message' => 'Error al desactivar el producto: ' . $stmt->error
         ]);
     }
+}elseif($accion === "allProducts"){
+
+    $sql = "SELECT * FROM
+        productos p 
+        inner join usuarios u on p.doc_proov = u.id_usu
+        ";
+        $result = $conn->query($sql);
+
+        $productos = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $productos[] = $row;
+        }
+        echo json_encode($productos);
+
+
 }else {
 
-    $sql = "SELECT * FROM productos p inner join usuarios u on p.doc_proov = u.id_usu  ";
+    $sql = "SELECT * FROM
+            productos p 
+            inner join usuarios u on p.doc_proov = u.id_usu 
+            and p.estado_prod = 1
+            and u.estado_usu = 1
+            ";
     $result = $conn->query($sql);
 
     $productos = [];

@@ -3,6 +3,7 @@ $(document).ready(function() {
     $.ajax({
         url: 'http://localhost/amt/app/models/obtenerProductos.php',
         type: 'GET',
+        data: {accion : 'allProducts'},
         dataType: 'json',
         success: function(productos) {
             const tbody = $('#tablaProductos tbody');
