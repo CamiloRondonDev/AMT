@@ -51,8 +51,8 @@ header("Expires: 0");
   </div>
   <div class="header-right">
     <div class="fas fa-gear" id="btnSettings" title="Cambiar contraseña"></div>
-    <div style="margin-left: 15px;" class="fas fa-sign-out-alt" id="btnClose" title="Cerrar Sesión"></div>
-    <a href="/amt/app/logout.php">Cerrar sesión</a>
+    <div style="margin-left: 15px; visibility: hidden;" class="fas fa-sign-out-alt" id="btnClose" title="Cerrar Sesión"></div>
+    <a style="text-decoration: none; color: white;" href="/amt/app/logout.php">Cerrar sesión</a>
   </div>
 </header>
 
