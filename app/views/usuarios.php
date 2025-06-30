@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+// Verificar sesión
+if (!isset($_SESSION['id_usu'])) {
+    header("Location: /amt/app/views/login.php");
+    exit;
+}
+
+// Evitar caché
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: 0");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
