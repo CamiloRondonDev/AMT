@@ -122,6 +122,10 @@ header img {
     padding: 12px 24px;
     font-size: 1rem;
     margin-top: auto; /* <- esto lo empuja hacia el fondo */
+    background: linear-gradient(135deg, #009900, #007f00);
+    text-decoration: none;
+    color: white;
+    
 }
 
 .buy-button:hover {
