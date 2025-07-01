@@ -7,7 +7,7 @@
     font-family: Arial, sans-serif;
     display: flex;
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
   }
 
   /* Sidebar */
@@ -159,7 +159,12 @@ header {
 #panel-content {
   width: 100%;
   height: 100%;
-  overflow: auto; /* Permite scroll horizontal y vertical */
+  overflow-x: auto; /* ✅ Fuerza scroll horizontal */
+  overflow-y: auto; /* ✅ Y vertical también */
   padding: 20px;
   box-sizing: border-box;
+}
+#content {
+  display: block; /* en vez de usar solo flex-grow */
+  overflow: auto;
 }
