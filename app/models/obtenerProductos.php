@@ -7,14 +7,6 @@ $accion = $_POST['accion'] ?? $_GET['accion'] ?? '';
 $id_usu = $_POST['id_usu'] ?? $_GET['id_usu'] ?? null;
 
 
-// Validar que haya sesión activa si no es una acción pública
-if (!isset($_SESSION['id_usu'])) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'message' => 'No autenticado']);
-    exit;
-}
-
-
 if ($accion === "activate_edit") {
     $stmt = $conn->prepare("UPDATE productos SET estado_prod = 1 WHERE id_prod = ?");
     $stmt->bind_param("s", $id_usu);
@@ -48,6 +40,14 @@ if ($accion === "activate_edit") {
         ]);
     }
 }elseif($accion === "allProducts"){
+
+    // Validar que haya sesión activa si no es una acción pública
+    if (!isset($_SESSION['id_usu'])) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'message' => 'No autenticado']);
+        exit;
+    }
+
 
     $rol = $_SESSION['rol'] ?? '';
     $idUsuario = $_SESSION['id_usu'] ?? 0;
