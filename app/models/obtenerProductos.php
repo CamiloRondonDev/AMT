@@ -88,21 +88,39 @@ if ($accion === "activate_edit") {
 
     echo json_encode($productos);
 }else {
+    // Parámetros de paginación
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $productosPorPagina = 20;
+    $inicio = ($pagina - 1) * $productosPorPagina;
 
-    $sql = "SELECT * FROM
-            productos p 
-            inner join usuarios u on p.doc_proov = u.id_usu 
-            and p.estado_prod = 1
-            and u.estado_usu = 1
-            ";
-    $result = $conn->query($sql);
+    // Contar total de productos activos
+    $sqlTotal = "SELECT COUNT(*) AS total FROM productos p 
+                 INNER JOIN usuarios u ON p.doc_proov = u.id_usu 
+                 WHERE p.estado_prod = 1 AND u.estado_usu = 1";
+    $totalResult = $conn->query($sqlTotal);
+    $total = $totalResult->fetch_assoc()['total'];
+    $totalPaginas = ceil($total / $productosPorPagina);
+
+    // Obtener productos de la página actual
+    $sql = "SELECT * FROM productos p 
+            INNER JOIN usuarios u ON p.doc_proov = u.id_usu 
+            WHERE p.estado_prod = 1 AND u.estado_usu = 1
+            LIMIT ?, ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $inicio, $productosPorPagina);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $productos = [];
-
     while ($row = $result->fetch_assoc()) {
         $productos[] = $row;
     }
-    echo json_encode($productos);
+
+    echo json_encode([
+        "productos" => $productos,
+        "totalPaginas" => $totalPaginas
+    ]);
 }
 
 

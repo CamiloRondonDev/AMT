@@ -1,7 +1,15 @@
 <?php require_once 'header.php'; ?>
 
+<main>
+
+<div class ="fondo-contenedor">
+
 <section class="products-section">
-    <h2>Productos Destacados</h2>
+    
+
+ <div class="product-wrapper">
+
+<h2>Productos Destacados</h2>
 
     <div class="search-container">
         <input type="text" id="search" placeholder="Buscar...">
@@ -41,7 +49,13 @@
 
         
     </div>
+
+</div>
 </section>
+
+</div>
+
+</main>
 
 <?php require_once 'footer.php'; ?>
 
