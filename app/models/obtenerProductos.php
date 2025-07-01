@@ -54,12 +54,24 @@ if ($accion === "activate_edit") {
 
     if ($rol === 'admin') {
         // Admin: trae todos los productos
-        $sql = "SELECT * FROM productos p 
+        $sql = "SELECT   
+        p.id_prod, p.nom_prod, p.desc_prod, p.cat_prod, p.tipo_prod, p.precio_prod,
+        p.fabrica_prod, p.dispo_prod, p.coverVenta_prod, p.img_prod, p.estado_prod,
+        p.doc_proov, p.obser_prod,
+        u.id_usu, u.nom_usu, u.apell_usu, u.tipoDoc_usu, u.correo_usu, u.tel_usu,
+        u.red_social, u.estado_usu, u.tipo_usu
+     FROM productos p 
                 INNER JOIN usuarios u ON p.doc_proov = u.id_usu";
         $stmt = $conn->prepare($sql);
     } else {
         // Usuario normal: solo los suyos
-        $sql = "SELECT * FROM productos p 
+        $sql = "SELECT 
+            p.id_prod, p.nom_prod, p.desc_prod, p.cat_prod, p.tipo_prod, p.precio_prod,
+            p.fabrica_prod, p.dispo_prod, p.coverVenta_prod, p.img_prod, p.estado_prod,
+            p.doc_proov, p.obser_prod,
+            u.id_usu, u.nom_usu, u.apell_usu, u.tipoDoc_usu, u.correo_usu, u.tel_usu,
+            u.red_social, u.estado_usu, u.tipo_usu
+        FROM productos p 
                 INNER JOIN usuarios u ON p.doc_proov = u.id_usu 
                 WHERE u.id_usu = ?";
         $stmt = $conn->prepare($sql);

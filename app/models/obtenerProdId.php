@@ -11,10 +11,24 @@ if ($id_prod === null) {
 }
 
 // Consulta principal (producto + proveedor)
-$sql = "SELECT * FROM productos p 
-        INNER JOIN usuarios u ON p.doc_proov = u.id_usu
-        WHERE p.id_prod = ?";
+
+   $sql = "SELECT 
+    p.id_prod, p.nom_prod, p.desc_prod, p.cat_prod, p.tipo_prod, p.precio_prod,
+    p.fabrica_prod, p.dispo_prod, p.coverVenta_prod, p.img_prod, p.estado_prod,
+    p.doc_proov, p.obser_prod,
+    u.id_usu, u.nom_usu, u.apell_usu, u.tipoDoc_usu, u.correo_usu, u.tel_usu,
+    u.red_social, u.estado_usu, u.tipo_usu
+    FROM productos p
+    INNER JOIN usuarios u ON p.doc_proov = u.id_usu
+    WHERE p.id_prod = ?";
+
+
 $stmt = $conn->prepare($sql);
+$stmt = $conn->prepare($sql);
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
 $stmt->bind_param("i", $id_prod);
 $stmt->execute();
 $result = $stmt->get_result();
