@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT id_usu, nom_usu, tipo_usu, pass_usu FROM usuarios WHERE correo_usu = ?");
+    $stmt = $conn->prepare("SELECT id_usu, nom_usu, tipo_usu, pass_usu FROM usuarios WHERE correo_usu = ? AND estado_usu = 1");
     if (!$stmt) {
         echo json_encode(["success" => false, "message" => "Error en la preparación de la consulta."]);
         exit;

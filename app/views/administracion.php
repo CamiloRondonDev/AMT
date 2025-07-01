@@ -35,10 +35,13 @@ header("Expires: 0");
 <!-- Sidebar -->
 <nav id="sidebar">
   <ul>
-    <li><a class="links" href="#" data-url="/AMT/app/views/usuarios.php">USUARIOS</a></li>
+    <?php if ($_SESSION['rol'] === 'admin'): ?>
+      <li><a class="links" href="#" data-url="/AMT/app/views/usuarios.php">USUARIOS</a></li>
+    <?php endif; ?>
     <li><a class="links" href="#" data-url="/AMT/app/views/adm_productos.php">PRODUCTOS</a></li>
   </ul>
 </nav>
+
 
 <!-- Header -->
 <header>
