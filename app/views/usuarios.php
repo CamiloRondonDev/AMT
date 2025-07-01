@@ -71,7 +71,13 @@ header("Expires: 0");
         <input type="text" name="id_usu" placeholder="Documento" required>
         <input type="email" name="correo_usu" placeholder="Correo" required>
         <input type="number" name="tel_usu" placeholder="Teléfono" required>
-        <input type="text" name="tipo_usu" placeholder="Tipo de usuario" required>
+             
+        <select name="tipo_usu" required>
+          <option value="">Tipo de usuario</option>
+          <option value="admin">Admin</option>
+          <option value="proveedor">Proveedor</option>
+        </select>
+
         <input type="text" name="red_social" placeholder="Red Social" required>
         <input type="password" name="pass_usu" placeholder="Contraseña" required>
         <input type="password" name="pass_usu_repeat" placeholder="Repita Contraseña" required>
