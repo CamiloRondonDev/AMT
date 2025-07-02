@@ -120,7 +120,7 @@ $.ajax({
                 $('#galeriaActual').append(`
                     <div class="imagen-item">
                         <img src="${media.ruta}" width="100">
-                        <button class="btnEliminarImagen" data-index="${index}" data-ruta="${media.ruta}">Eliminar</button>
+                        <button class="btnEliminarImagen" data-id="${media.id}" data-ruta="${media.ruta}">Eliminar</button>
                     </div>
                 `);
             });
@@ -136,6 +136,39 @@ $.ajax({
 });
 
 });
+
+// Eliminar imagen de la galería y del servidor
+$('#galeriaActual').on('click', '.btnEliminarImagen', function (e) {
+    e.preventDefault();
+
+    const idMedia = $(this).data('id');      // id_media en BD
+    const $item = $(this).closest('.imagen-item');
+
+    if (!confirm("¿Seguro que deseas eliminar esta imagen?")) return;
+
+    $.ajax({
+        url: 'http://localhost/amt/app/models/obtenerProductos.php',
+        method: 'POST',
+        data: {
+            accion: 'deleteMedia',
+            id_media: idMedia
+        },
+        dataType: 'json',
+        success: function (resp) {
+            if (resp.success) {
+                // Quitar del DOM
+                $item.remove();
+            } else {
+                alert('Error al eliminar: ' + resp.message);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error AJAX al eliminar media:', error);
+            alert('Error al eliminar la imagen.');
+        }
+    });
+});
+
 
 // Cerrar modal de editar producto
 $('.cerrar-editar').click(function () {
@@ -153,6 +186,35 @@ $(document).on('click', function (event) {
     }
 });
 
+//enviar datos a actualizar producto
+$('#formEditarProducto').on('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    formData.append('accion', 'updateProduct');
+
+    $.ajax({
+        url: 'http://localhost/amt/app/models/obtenerProductos.php',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (respuesta) {
+            if (respuesta.success) {
+                alert('Producto actualizado correctamente');
+                $('#modalEditarProducto').fadeOut();
+                // Recargar lista si es necesario
+                // cargarProductos();
+            } else {
+                alert('Error: ' + (respuesta.message || 'No se pudo actualizar'));
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error en la solicitud:', error);
+            alert('Error al actualizar el producto');
+        }
+    });
+});
 
 
 function cargarProveedoresEditar(idSeleccionado) {
