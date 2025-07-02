@@ -78,7 +78,41 @@ header("Expires: 0");
     </form>
   </div>
 </div>
-  
+<!-- editar producto e imagenes -->
+
+<!-- Modal para editar producto -->
+<div style="display: none;" id="modalEditarProducto" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar-editar">&times;</span>
+    <h3>Editar producto</h3>
+    <form id="formEditarProducto" enctype="multipart/form-data">
+      <input type="hidden" name="id_prod" id="edit_id_prod">
+
+      <input type="text" name="nombre_prod" id="edit_nombre_prod" placeholder="Nombre del producto" required>
+      <input type="text" name="fabrica" id="edit_fabrica" placeholder="Fábrica" required>
+      <input type="text" name="cobertura" id="edit_cobertura" placeholder="Cobertura de venta" required>
+      <input type="text" name="disponibilidad" id="edit_disponibilidad" placeholder="Disponibilidad" required>
+      <input name="tipo" id="edit_tipo" placeholder="Tipo de Producto" required>
+      <input type="number" name="precio" id="edit_precio" placeholder="Precio" required>
+      <textarea name="descripcion" id="edit_descripcion" placeholder="Descripción" required></textarea>
+      <input type="text" name="categoria" id="edit_categoria" placeholder="Categoría" required>
+      <select name="proveedor" id="edit_selectProveedores" required>
+        <option value="">Seleccione un proveedor</option>
+      </select>
+
+      <label>Imágenes/Vídeos actuales:</label>
+      <div id="galeriaActual" class="galeria-container"></div>
+
+      <label>Nuevas imágenes/videos (opcional):</label>
+      <input type="file" name="media[]" accept="image/*,video/*" multiple>
+
+      <textarea name="observacion" id="edit_observacion" placeholder="Observación" required></textarea>
+
+      <button type="submit">Actualizar</button>
+    </form>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../public/js/adm_productos.js"></script>

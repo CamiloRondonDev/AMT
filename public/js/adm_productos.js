@@ -39,14 +39,14 @@ $(document).ready(function() {
         }
     });
 
-    // ✅ Abrir modal solo cuando se hace clic
+    // ✅ Abrir modal solo cuando se hace clic crear
     $('#btnAgregarProducto').click(function () {
         cargarProveedores()
         $('#modalAgregarProducto').fadeIn();
         
     });
 
-    // Cerrar modal
+    // Cerrar modal crear
     $('.cerrar').click(function () {
         $('#modalAgregarProducto').fadeOut();
     });
@@ -88,6 +88,96 @@ $(document).ready(function() {
         });
     });
 
+// ✅ Abrir modal de editar producto
+$('#tablaProductos').on('click', '.btnEditar', function () {
+    const id = $(this).data('id');
+
+    // Aquí puedes cargar los datos del producto vía AJAX
+$.ajax({
+    url: 'http://localhost/amt/app/models/obtenerProductos.php',
+    type: 'GET',
+    data: { accion: 'getById', id_prod: id },
+    dataType: 'json',
+    success: function(producto) {
+        // Rellenar el formulario con los datos
+        $('#edit_id_prod').val(producto.id_prod);
+        $('#edit_nombre_prod').val(producto.nom_prod);
+        $('#edit_fabrica').val(producto.fabrica_prod);
+        $('#edit_cobertura').val(producto.coverVenta_prod); // ← este nombre también estaba mal
+        $('#edit_disponibilidad').val(producto.dispo_prod);
+        $('#edit_tipo').val(producto.tipo_prod);
+        $('#edit_precio').val(producto.precio_prod);
+        $('#edit_descripcion').val(producto.desc_prod);
+        $('#edit_categoria').val(producto.cat_prod); // ← nombre corregido
+        $('#edit_observacion').val(producto.obser_prod); // ← nombre corregido
+
+        cargarProveedoresEditar(producto.doc_proov); // ← campo correcto para proveedor
+
+        // ✅ Cargar imágenes actuales desde producto.medios
+        $('#galeriaActual').empty();
+        if (Array.isArray(producto.medios)) {
+            producto.medios.forEach((media, index) => {
+                $('#galeriaActual').append(`
+                    <div class="imagen-item">
+                        <img src="${media.ruta}" width="100">
+                        <button class="btnEliminarImagen" data-index="${index}" data-ruta="${media.ruta}">Eliminar</button>
+                    </div>
+                `);
+            });
+        }
+
+
+        $('#modalEditarProducto').fadeIn();
+    },
+    error: function(xhr, status, error) {
+        console.error('Error al cargar datos del producto', error);
+        alert('Error al cargar los datos del producto.');
+    }
+});
+
+});
+
+// Cerrar modal de editar producto
+$('.cerrar-editar').click(function () {
+    $('#modalEditarProducto').fadeOut();
+});
+
+// Cierre del modal al hacer clic fuera del contenido
+$(document).on('click', function (event) {
+    const $modal = $('#modalEditarProducto');
+    const $contenido = $modal.find('.modal-contenido');
+
+    // Si el modal está visible y se hace clic fuera del contenido
+    if ($modal.is(':visible') && !$contenido.is(event.target) && $contenido.has(event.target).length === 0) {
+        $modal.fadeOut();
+    }
+});
+
+
+
+function cargarProveedoresEditar(idSeleccionado) {
+    $.ajax({
+        url: 'http://localhost/amt/app/models/usuarios.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(usuarios) {
+            const select = $('#edit_selectProveedores');
+            select.empty().append('<option value="">Seleccione un proveedor</option>');
+
+            usuarios.forEach(p => {
+                const selected = (p.id_usu == idSeleccionado) ? 'selected' : '';
+                select.append(`<option value="${p.id_usu}" ${selected}>${p.nom_usu}</option>`);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error al cargar proveedores:", error);
+        }
+    });
+}
+
+
+
+
   // Exportar a Excel
   document.getElementById('btnExportarProductos').addEventListener('click', function () {
     const tabla = document.getElementById('tablaProductos');
@@ -105,7 +195,7 @@ $('#tablaProductos').on('click', '.btnActivar', function () {
     type: 'POST',
    data: {
       accion: 'activate_edit',
-      id_usu: id
+      id_prod: id
     },
     success: function (response) {
       // Verifica si es string o JSON
@@ -139,7 +229,7 @@ $('#tablaProductos').on('click', '.btnInactivar', function () {
     type: 'POST',
    data: {
       accion: 'inactivate_edit',
-      id_usu: id
+      id_prod: id
     },
     success: function (response) {
       // Verifica si es string o JSON
