@@ -55,6 +55,14 @@ $(document).ready(function() {
     $('#formNuevoProducto').submit(function (e) {
         e.preventDefault();
 
+         // 1) Validar mínimo 3 archivos
+        const inputFiles = this.querySelector('input[type="file"]');
+        const archivos = inputFiles.files;
+        if (archivos.length > 3) {
+          alert("Solo puedes seleccionar hasta 3 imagenes");
+          return; // Sale sin enviar
+        }
+
         const form = e.target;
         const data = new FormData(form);
 
@@ -79,13 +87,13 @@ $(document).ready(function() {
                 }
             }
 
-            form.reset(); // Limpia formulario
-            },
-            error: function (xhr, status, error) {
-            document.getElementById("respuesta").innerText = "Error al registrar usuario.";
-            console.error("Error AJAX:", error);
-            }
-        });
+             form.reset(); // Limpia formulario
+             },
+             error: function (xhr, status, error) {
+             document.getElementById("respuesta").innerText = "Error al registrar usuario.";
+             console.error("Error AJAX:", error);
+             }
+         });
     });
 
 // ✅ Abrir modal de editar producto
@@ -189,6 +197,14 @@ $(document).on('click', function (event) {
 //enviar datos a actualizar producto
 $('#formEditarProducto').on('submit', function (e) {
     e.preventDefault();
+
+    // 1) Validar mínimo 3 archivos
+    const inputFiles = this.querySelector('input[type="file"]');
+    const archivos = inputFiles.files;
+    if (archivos.length > 3) {
+      alert("Solo puedes seleccionar hasta 3 imagenes");
+      return; 
+    }
 
     const formData = new FormData(this);
     formData.append('accion', 'updateProduct');
@@ -336,14 +352,14 @@ $('#tablaProductos').on('click', '.btnInactivar', function () {
 }
 
 //validaciones carga de imagenes
-document.getElementById("formNuevoProducto").addEventListener("submit", function (e) {
-  const archivos = this.querySelector('input[type="file"]').files;
-  if (archivos.length < 3) {
-    alert("Debes seleccionar al menos 3 archivos (imágenes o videos).");
-    e.preventDefault();
-    return false;
-  }
-});
+// document.getElementById("formNuevoProducto").addEventListener("submit", function (e) {
+//   const archivos = this.querySelector('input[type="file"]').files;
+//   if (archivos.length < 3) {
+//     alert("Debes seleccionar al menos 3 archivos (imágenes o videos).");
+//     e.preventDefault();
+//     return false;
+//   }
+// });
 
 
 //recarga solo recargarVistaProductos
