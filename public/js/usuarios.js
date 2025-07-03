@@ -127,11 +127,17 @@ $('#tablaUsuarios').on('click', '.btnInactivar', function () {
   // Abrir modal
   document.getElementById("btnAbrirModal").addEventListener("click", () => {
     document.getElementById("modalRegistro").style.display = "flex";
+    $('#modalTitulo').text('Registro Nuevo Proveedor');
   });
 
   // Cerrar modal
   document.getElementById("cerrarModal").addEventListener("click", () => {
-    document.getElementById("modalRegistro").style.display = "none";
+      const modal = document.getElementById("modalRegistro");
+      const form = modal.querySelector("form"); // Toma el formulario dentro del modal
+
+      form.reset(); // ✅ Limpia todos los campos del formulario
+      modal.style.display = "none"; // Oculta el modal
+
   });
 
   // Cerrar al hacer clic fuera del contenido
@@ -188,7 +194,6 @@ $('#tablaUsuarios').on('click', '.btnEditar', function () {
 // Botón de guardar (crear o actualizar usuario)
 $('#registroForm').on('submit', function (e) {
   e.preventDefault();
-  alert('camilo_llamdo_metodo')
   const formData = $(this).serialize(); // ✅ Definir la variable
   $.ajax({
     url: 'http://localhost/amt/app/models/createUser.php',

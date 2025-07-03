@@ -20,7 +20,7 @@ header("Expires: 0");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/amt/public/css/adm_usuarios.css">
-    <link rel="stylesheet" href="/amt/public/css/create_user.css">
+    <!-- <link rel="stylesheet" href="/amt/public/css/create_user.css"> -->
     <title>Document</title>
 
 </head>
@@ -51,7 +51,6 @@ header("Expires: 0");
 </div>
 
 <!-- Modal oculto -->
-<!-- Modal oculto -->
 <div id="modalRegistro" class="modal" style="display: none;">
   <div class="modal-contenido">
     <span class="cerrar" id="cerrarModal">&times;</span>
@@ -81,6 +80,7 @@ header("Expires: 0");
         <input type="text" name="red_social" placeholder="Red Social" required>
         <input type="password" name="pass_usu" placeholder="Contraseña" required>
         <input type="password" name="pass_usu_repeat" placeholder="Repita Contraseña" required>
+        <input type="checkbox" name="change_passw" placeholder="cambiar contraseña"></input>
       </div>
 
       <!-- Campos ocultos para acción y edición -->
