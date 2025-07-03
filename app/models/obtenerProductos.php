@@ -152,7 +152,7 @@ if ($accion === "activate_edit") {
 
     $conn->close(); // 🔒 cerrar conexión SOLO al final
 
-}elseif ($accion === 'updateProduct') {
+} elseif ($accion === 'updateProduct') {
     $id = $_POST['id_prod'] ?? null;
     $nombre = $_POST['nombre_prod'] ?? '';
     $fabrica = $_POST['fabrica'] ?? '';
@@ -170,7 +170,7 @@ if ($accion === "activate_edit") {
         exit;
     }
 
-    // Actualizar datos del producto
+    // 1) Actualizar datos del producto
     $sql = "UPDATE productos SET 
         nom_prod = ?, fabrica_prod = ?, coverVenta_prod = ?, dispo_prod = ?, 
         tipo_prod = ?, precio_prod = ?, desc_prod = ?, cat_prod = ?, 
@@ -181,73 +181,74 @@ if ($accion === "activate_edit") {
         $nombre, $fabrica, $cobertura, $dispo,
         $tipo, $precio, $descripcion, $categoria,
         $proveedor, $observacion, $id);
-
     if (!$stmt->execute()) {
         echo json_encode(['success' => false, 'message' => 'Error al actualizar: ' . $stmt->error]);
         exit;
     }
     $stmt->close();
 
-    // Subir nuevos archivos si se cargaron
+    // 2) Subir nuevos archivos si se cargaron
     $mediaGuardadas = [];
     if (!empty($_FILES['media']['name'][0])) {
         $uploadDir = __DIR__ . '/../../public/uploads/medios/';
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 
-        foreach ($_FILES['media']['tmp_name'] as $index => $tmpName) {
-            $ext = pathinfo($_FILES['media']['name'][$index], PATHINFO_EXTENSION);
-            $nombreArchivo = 'media_' . uniqid() . '.' . $ext;
-            $rutaCompleta = $uploadDir . $nombreArchivo;
-            $url = "http://localhost/amt/public/uploads/medios/" . $nombreArchivo;
+        foreach ($_FILES['media']['tmp_name'] as $i => $tmpName) {
+            $ext = pathinfo($_FILES['media']['name'][$i], PATHINFO_EXTENSION);
+            $nuevoNombre = 'media_' . uniqid() . '.' . $ext;
+            $rutaCompleta = $uploadDir . $nuevoNombre;
+            $url = "http://localhost/amt/public/uploads/medios/" . $nuevoNombre;
 
             if (move_uploaded_file($tmpName, $rutaCompleta)) {
-                $tipoArchivo = explode("/", $_FILES['media']['type'][$index])[0] === 'video' ? 'video' : 'imagen';
-
-                // Guardar medio
-                $stmtMedia = $conn->prepare("INSERT INTO medios (ruta, tipo, producto_id) VALUES (?, ?, ?)");
-                $stmtMedia->bind_param("ssi", $url, $tipoArchivo, $id);
-                $stmtMedia->execute();
-                $stmtMedia->close();
-
+                $tipoArchivo = explode("/", $_FILES['media']['type'][$i])[0] === 'video' ? 'video' : 'imagen';
+                $stmtM = $conn->prepare("INSERT INTO medios (producto_id, ruta, tipo) VALUES (?, ?, ?)");
+                $stmtM->bind_param("iss", $id, $url, $tipoArchivo);
+                $stmtM->execute();
+                $stmtM->close();
                 $mediaGuardadas[] = $url;
             }
         }
-
-        // Verificar si el producto ya tiene una portada (img_prod)
-        $stmtCheck = $conn->prepare("SELECT img_prod FROM productos WHERE id_prod = ?");
-        $stmtCheck->bind_param("i", $id);
-        $stmtCheck->execute();
-        $result = $stmtCheck->get_result();
-        $productoExistente = $result->fetch_assoc();
-        $stmtCheck->close();
-
-        // Si no hay imagen principal, usar la primera subida
-        if (empty($productoExistente['img_prod']) && count($mediaGuardadas) > 0) {
-            $imgPortada = $mediaGuardadas[0];
-            $stmtUpdateImg = $conn->prepare("UPDATE productos SET img_prod = ? WHERE id_prod = ?");
-            $stmtUpdateImg->bind_param("si", $imgPortada, $id);
-            $stmtUpdateImg->execute();
-            $stmtUpdateImg->close();
-        }
     }
 
+    // 3) Actualizar img_prod:
+    //    a) Si subimos nuevas imágenes, usamos la primera de $mediaGuardadas
+    //    b) Si no, buscamos la primera imagen existente en medios
+    if (count($mediaGuardadas) > 0) {
+        $imgPortada = $mediaGuardadas[0];
+    } else {
+        // traer primera ruta de medios existentes
+        $stmtF = $conn->prepare("SELECT ruta FROM medios WHERE producto_id = ? ORDER BY id LIMIT 1");
+        $stmtF->bind_param("i", $id);
+        $stmtF->execute();
+        $resF = $stmtF->get_result();
+        $filaF = $resF->fetch_assoc();
+        $stmtF->close();
+        $imgPortada = $filaF['ruta'] ?? '';
+    }
+
+    if ($imgPortada) {
+        $stmtU = $conn->prepare("UPDATE productos SET img_prod = ? WHERE id_prod = ?");
+        $stmtU->bind_param("si", $imgPortada, $id);
+        $stmtU->execute();
+        $stmtU->close();
+    }
+
+    // 4) Respuesta
     echo json_encode([
         'success' => true,
         'message' => 'Producto actualizado con éxito',
         'nuevosMedios' => $mediaGuardadas
     ]);
-}elseif($accion === 'deleteMedia'){
-    
+    exit;
+} elseif ($accion === 'deleteMedia') {
     $id_media = $_POST['id_media'] ?? null;
     if (!$id_media) {
         echo json_encode(['success' => false, 'message' => 'ID de media no proporcionado']);
         exit;
     }
 
-    // 1) Obtener la ruta del archivo (columna id_media)
-    $stmt = $conn->prepare("SELECT ruta FROM medios WHERE id = ?");
+    // 1) Obtener ruta y producto_id del medio
+    $stmt = $conn->prepare("SELECT ruta, producto_id FROM medios WHERE id = ?");
     if (!$stmt) {
         echo json_encode(['success' => false, 'message' => 'Error al preparar select ruta: ' . $conn->error]);
         exit;
@@ -261,10 +262,11 @@ if ($accion === "activate_edit") {
         exit;
     }
     $fila = $res->fetch_assoc();
-    $ruta = $fila['ruta'];
+    $ruta  = $fila['ruta'];
+    $prodId = $fila['producto_id'];
     $stmt->close();
 
-    // 2) Eliminar registro de BD (usando id_media)
+    // 2) Eliminar registro de medios
     $stmtDel = $conn->prepare("DELETE FROM medios WHERE id = ?");
     if (!$stmtDel) {
         echo json_encode(['success' => false, 'message' => 'Error al preparar delete medios: ' . $conn->error]);
@@ -280,13 +282,40 @@ if ($accion === "activate_edit") {
 
     // 3) Eliminar archivo físico
     $publicPath = '/AMT/public/uploads/medios/';
-    $docRoot = $_SERVER['DOCUMENT_ROOT'];
-    $filePath = str_replace($publicPath, $docRoot . $publicPath, $ruta);
+    $docRoot    = $_SERVER['DOCUMENT_ROOT'];
+    $filePath   = str_replace($publicPath, $docRoot . $publicPath, $ruta);
     if (file_exists($filePath)) {
         @unlink($filePath);
     }
 
-    echo json_encode(['success' => true, 'message' => 'Imagen eliminada']);
+    // 4) Verificar si era la portada
+    $stmtProd = $conn->prepare("SELECT img_prod FROM productos WHERE id_prod = ?");
+    $stmtProd->bind_param("i", $prodId);
+    $stmtProd->execute();
+    $resProd = $stmtProd->get_result();
+    $prod    = $resProd->fetch_assoc();
+    $stmtProd->close();
+
+    if (isset($prod['img_prod']) && $prod['img_prod'] === $ruta) {
+        // Buscar otra imagen en medios
+        $stmtNext = $conn->prepare("SELECT ruta FROM medios WHERE producto_id = ? ORDER BY id LIMIT 1");
+        $stmtNext->bind_param("i", $prodId);
+        $stmtNext->execute();
+        $resNext = $stmtNext->get_result();
+        $nuevaPortada = '';
+        if ($rowNext = $resNext->fetch_assoc()) {
+            $nuevaPortada = $rowNext['ruta'];
+        }
+        $stmtNext->close();
+
+        // Actualizar img_prod (puede ser cadena vacía si no hay más)
+        $stmtUp = $conn->prepare("UPDATE productos SET img_prod = ? WHERE id_prod = ?");
+        $stmtUp->bind_param("si", $nuevaPortada, $prodId);
+        $stmtUp->execute();
+        $stmtUp->close();
+    }
+
+    echo json_encode(['success' => true, 'message' => 'Imagen eliminada y portada actualizada']);
     exit;
 }else {
     // Parámetros de paginación

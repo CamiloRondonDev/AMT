@@ -202,7 +202,8 @@ $('#formEditarProducto').on('submit', function (e) {
         success: function (respuesta) {
             if (respuesta.success) {
                 alert('Producto actualizado correctamente');
-                $('#modalEditarProducto').fadeOut();
+                  $('#formEditarProducto').find('input[type="file"]').val('');
+                  $('#modalEditarProducto').fadeOut();
                 // Recargar lista si es necesario
                 // cargarProductos();
             } else {
@@ -236,9 +237,6 @@ function cargarProveedoresEditar(idSeleccionado) {
         }
     });
 }
-
-
-
 
   // Exportar a Excel
   document.getElementById('btnExportarProductos').addEventListener('click', function () {
