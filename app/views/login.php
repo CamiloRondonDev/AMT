@@ -25,7 +25,7 @@
                 
         <div class="login-options">
             <a href="create_user.php" class="btn-create-account">Crear cuenta nueva</a>
-            <a href="#" class="btn-recover-password">¿Olvidaste tu contraseña?</a>
+            <a href="contacto.php" class="btn-recover-password">¿Olvidaste tu contraseña?</a>
         </div>
     </form>
 

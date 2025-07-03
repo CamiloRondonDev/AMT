@@ -36,7 +36,7 @@ formChangePass.addEventListener('submit', (e) => {
   const respuestaDiv = document.getElementById("respuestaCambioPass"); // div opcional para mostrar mensajes
 
   if (newPass !== confirmPass) {
-    respuestaDiv.innerText = "Las contraseñas nuevas no coinciden.";
+    alert('Las contraseñas nuevas no coinciden.')
     return;
   }
 
@@ -51,20 +51,25 @@ formChangePass.addEventListener('submit', (e) => {
     success: function (response) {
 
       if (typeof response === 'string') {
-        document.getElementById("respuestaCambioPass").innerText = response;
+        // document.getElementById("respuestaCambioPass").innerText = response;
+        alert(response)
       } else {
         if (response.success) {
-          document.getElementById("respuestaCambioPass").innerText = "Contraseña Actualizada";
-          // window.location.href = 'login.php'; // Descomenta si quieres redirigir
+          // document.getElementById("respuestaCambioPass").innerText = "Contraseña Actualizada";
+          alert('Contraseña actualizada correctamente')
+          modalChangePass.classList.remove('active');
         } else {
-          document.getElementById("respuestaCambioPass").innerText = "Error: " + response.message;
+          // document.getElementById("respuestaCambioPass").innerText = "Error: " + response.message;
+          alert("Error: " + response.message)
+          
         }
       }
       form.reset(); // Limpia formulario
 
     },
     error: function (xhr, status, error) {
-      respuestaDiv.innerText = "Error al intentar cambiar la contraseña.";
+      // respuestaDiv.innerText = "Error al intentar cambiar la contraseña.";
+       alert('Error al intentar cambiar la contraseña.')
       console.error("Error AJAX:", error);
     }
   });
