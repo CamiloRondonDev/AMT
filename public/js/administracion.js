@@ -23,23 +23,53 @@
     modalChangePass.classList.remove('active');
   });
 
-  // Envío de cambio de contraseña
-  formChangePass.addEventListener('submit', (e) => {
-    e.preventDefault();
 
-    const currentPass = formChangePass.currentPass.value;
-    const newPass = formChangePass.newPass.value;
-    const confirmPass = formChangePass.confirmPass.value;
+// Envío de cambio de contraseña
+formChangePass.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-    if (newPass !== confirmPass) {
-      alert("Las contraseñas nuevas no coinciden.");
-      return;
+  const form = e.target;
+  const currentPass = form.querySelector('input[name="currentPass"]').value;
+  const newPass = form.querySelector('input[name="newPass"]').value;
+  const confirmPass = form.querySelector('input[name="confirmPass"]').value;
+
+  const respuestaDiv = document.getElementById("respuestaCambioPass"); // div opcional para mostrar mensajes
+
+  if (newPass !== confirmPass) {
+    respuestaDiv.innerText = "Las contraseñas nuevas no coinciden.";
+    return;
+  }
+
+  const data = new FormData(form);
+
+  $.ajax({
+    url: 'http://localhost/amt/app/models/actualizarpassword.php',
+    type: 'POST',
+    data: data,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+
+      if (typeof response === 'string') {
+        document.getElementById("respuestaCambioPass").innerText = response;
+      } else {
+        if (response.success) {
+          document.getElementById("respuestaCambioPass").innerText = "Contraseña Actualizada";
+          // window.location.href = 'login.php'; // Descomenta si quieres redirigir
+        } else {
+          document.getElementById("respuestaCambioPass").innerText = "Error: " + response.message;
+        }
+      }
+      form.reset(); // Limpia formulario
+
+    },
+    error: function (xhr, status, error) {
+      respuestaDiv.innerText = "Error al intentar cambiar la contraseña.";
+      console.error("Error AJAX:", error);
     }
-
-    alert("Aquí va la lógica para cambiar la contraseña.");
-    modalChangePass.classList.remove('active');
-    formChangePass.reset();
   });
+});
+
 
     //cerrar sesion
     document.getElementById("btnClose").addEventListener("click", function () {

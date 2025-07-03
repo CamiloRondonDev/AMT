@@ -82,7 +82,10 @@ header("Expires: 0");
       <button type="button" id="closeModal" style="margin-top:10px; background:#ccc;">Cancelar</button>
     </form>
   </div>
+  <div id="respuestaCambioPass" style="margin-top:10px; color:red;"></div>
+
 </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/amt/public/js/administracion.js"></script>
 </body>
 </html>
