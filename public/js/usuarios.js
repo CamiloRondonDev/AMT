@@ -151,6 +151,16 @@ $('#tablaUsuarios').on('click', '.btnInactivar', function () {
 
 
 // Editar usuario
+// Escuchar el cambio del checkbox
+$('#registroForm [name="change_passw"]').on('change', function () {
+  const habilitar = $(this).is(':checked');
+
+  // Habilita o deshabilita los campos de contraseña
+  $('#registroForm [name="pass_usu"]').prop('disabled', !habilitar);
+  $('#registroForm [name="pass_usu_repeat"]').prop('disabled', !habilitar);
+});
+
+
 $('#tablaUsuarios').on('click', '.btnEditar', function () {
   const id = $(this).data('id');
    $.ajax({
@@ -170,8 +180,10 @@ $('#tablaUsuarios').on('click', '.btnEditar', function () {
       $('#registroForm [name="red_social"]').val(usuario.red_social);
 
       // Ocultar campos de contraseña si no quieres editarlos
-      $('#registroForm [name="pass_usu"]').val('');
-      $('#registroForm [name="pass_usu_repeat"]').val('');
+      $('#registroForm [name="pass_usu"]').val('').prop('disabled', true);
+      $('#registroForm [name="pass_usu_repeat"]').val('').prop('disabled', true);
+      $('#registroForm [name="change_passw"]').prop('checked', false);
+
 
       // Actualizar campos ocultos para modo edición
       $('#accion').val('update_user');

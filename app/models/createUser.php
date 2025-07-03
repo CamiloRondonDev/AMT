@@ -13,6 +13,7 @@ $password_plain = $_POST['pass_usu'] ?? '';
 $tipo = $_POST['tipo_usu'] ?? '';
 $red_social = $_POST['red_social'] ?? '';
 $estado = 0;
+$change_passw=$_POST['change_passw'] ?? '';
 
 $accion = $_POST['accion'] ?? '';
 
@@ -76,21 +77,36 @@ if ($accion === "activate_edit") {
     ]);
   }
 }elseif ($accion === "update_user") {
-  // Prepara la consulta de actualización (sin contraseña)
-  $stmt = $conn->prepare("UPDATE usuarios SET nom_usu = ?, apell_usu = ?, tipoDoc_usu = ?, correo_usu = ?, tel_usu = ?, tipo_usu = ?, red_social = ? WHERE id_usu = ?");
-  $stmt->bind_param("ssssssss", $nombre, $apellido, $tipoDoc, $correo, $telefono, $tipo, $red_social, $id_usu);
+      // Prepara la consulta de actualización (sin contraseña)
+      $stmt = $conn->prepare("UPDATE usuarios SET nom_usu = ?, apell_usu = ?, tipoDoc_usu = ?, correo_usu = ?, tel_usu = ?, tipo_usu = ?, red_social = ? WHERE id_usu = ?");
+      $stmt->bind_param("ssssssss", $nombre, $apellido, $tipoDoc, $correo, $telefono, $tipo, $red_social, $id_usu);
 
-  if ($stmt->execute()) {
-    echo json_encode([
-      'success' => true,
-      'message' => 'Usuario actualizado correctamente.'
-    ]);
-  } else {
-    echo json_encode([
-      'success' => false,
-      'message' => 'Error al actualizar el usuario: ' . $stmt->error
-    ]);
-  }
+      if ($stmt->execute()) {
+        if ($change_passw === 'on') {
+                  $nuevaPass = $_POST['pass_usu'] ?? '';
+                  if (!empty($nuevaPass)) {
+                      $hash = password_hash($nuevaPass, PASSWORD_DEFAULT);
+                      $stmtPass = $conn->prepare("UPDATE usuarios SET pass_usu = ? WHERE id_usu = ?");
+                      $stmtPass->bind_param("ss", $hash, $id_usu);
+                      $stmtPass->execute();
+                      $stmtPass->close();
+                  }
+                  echo json_encode([
+                  'success' => true,
+                  'message' => 'Usuario y su contraseña actualizado correctamente.'
+                ]);
+        }else{
+                echo json_encode([
+                  'success' => true,
+                  'message' => 'Usuario actualizado correctamente.'
+                ]);
+        }
+      }else {
+        echo json_encode([
+          'success' => false,
+          'message' => 'Error al actualizar el usuario: ' . $stmt->error
+        ]);
+      }
 }
 else {
 
