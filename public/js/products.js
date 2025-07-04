@@ -12,6 +12,9 @@ $(document).ready(function () {
         data: { id: productoId },
         dataType: 'json',
         success: function (response) {
+
+            console.log("🖼 Medios recibidos:", response.medios); 
+            
             if (response.error) {
                 alert('Producto no encontrado');
                 return;
@@ -38,23 +41,19 @@ $(document).ready(function () {
             $('#sellerEmail').text(response.correo_usu);
 
             // Mostrar todas las imágenes
-            const galeria = $('#mediaGallery');
-            galeria.empty();
+if (Array.isArray(response.medios)) {
+    const soloImagenes = response.medios
+        .filter(m => m.tipo === 'imagen')
+        .map(img => img.ruta);
 
-            if (Array.isArray(response.medios)) {
-                const soloImagenes = response.medios.filter(m => m.tipo === 'imagen');
-
-                if (soloImagenes.length > 0) {
-                    soloImagenes.forEach(imagen => {
-                        galeria.append(`<img src="${imagen.ruta}" alt="imagen producto" style="width:120px; margin:5px; border-radius:8px;">`);
-                    });
-                } else {
-                    galeria.append('<p>No hay imágenes disponibles.</p>');
-                }
-            } else {
-                galeria.append('<p>Sin galería disponible.</p>');
-            }
-
+    if (soloImagenes.length > 0) {
+        setGalleryImageArray(soloImagenes); // usa la función global
+    } else {
+        $('#carouselImage').attr('src', '/ruta/imagen_no_disponible.webp');
+    }
+} else {
+    $('#carouselImage').attr('src', '/ruta/imagen_no_disponible.webp');
+}
             // WhatsApp
             const telefonoVendedor = response.tel_usu.startsWith('57') ? response.tel_usu : '57' + response.tel_usu;
             const mensaje = encodeURIComponent(`Hola, estoy interesado en tu producto: ${response.nom_prod}`);
